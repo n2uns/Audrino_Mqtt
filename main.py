@@ -12,87 +12,118 @@ import time
 LOGGER = udi_interface.LOGGER
 Custom = udi_interface.Custom
 
-# This is a sample Python script.
+polyglot = None
+Parameters = None
+n_queue = []
+count = 0
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-class Controller(udi_interface.Node):
-    id = 'ctl'
+'''
+TestNode is the device class.  Our simple counter device
+holds two values, the count and the count multiplied by a user defined
+multiplier. These get updated at every shortPoll interval
+'''
+class TestNode(udi_interface.Node):
+    id = 'test'
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
             {'driver': 'GV0', 'value': 0, 'uom': 56},
+            {'driver': 'GV1', 'value': 0, 'uom': 56},
             ]
 
-    def __init__(self, polyglot, parent, address, name):
-        super(Controller, self).__init__(polyglot, parent, address, name)
+    def noop(self):
+        LOGGER.info('Discover not implemented')
 
-        self.poly = polyglot
-        self.count = 0
-        self.n_queue = []
+    commands = {'DISCOVER': noop}
 
-        self.Parameters = Custom(polyglot, 'customparams')
+'''
+node_queue() and wait_for_node_event() create a simple way to wait
+for a node to be created.  The nodeAdd() API call is asynchronous and
+will return before the node is fully created. Using this, we can wait
+until it is fully created before we try to use it.
+'''
+def node_queue(data):
+    n_queue.append(data['address'])
+
+def wait_for_node_event():
+    while len(n_queue) == 0:
+        time.sleep(0.1)
+    n_queue.pop()
+
+'''
+Read the user entered custom parameters. In this case, it is just
+the 'multiplier' value.  Save the parameters in the global 'Parameters'
+'''
+def parameterHandler(params):
+    global Parameters
+
+    Parameters.load(params)
+
+
+'''
+This is where the real work happens.  When we get a shortPoll, increment the
+count, report the current count in GV0 and the current count multiplied by
+the user defined value in GV1. Then display a notice on the dashboard.
+'''
+def poll(polltype):
+    global count
+    global Parameters
+
+    if 'shortPoll' in polltype:
+        if Parameters['multiplier'] is not None:
+            mult = int(Parameters['multiplier'])
+        else:
+            mult = 1
+
+        node = polyglot.getNode('my_address')
+        if node is not None:
+            count += 1
+
+            node.setDriver('GV0', count, True, True)
+            node.setDriver('GV1', (count * mult), True, True)
+
+            # be fancy and display a notice on the polyglot dashboard
+            polyglot.Notices['count'] = 'Current count is {}'.format(count)
+
+
+'''
+When we are told to stop, we update the node's status to False.  Since
+we don't have a 'controller', we have to do this ourselves.
+'''
+def stop():
+    nodes = polyglot.getNodes()
+    for n in nodes:
+        nodes[n].setDriver('ST', 0, True, True)
+    polyglot.stop()
+
+if __name__ == "__main__":
+    try:
+        polyglot = udi_interface.Interface([])
+        polyglot.start()
+
+        Parameters = Custom(polyglot, 'customparams')
 
         # subscribe to the events we want
-        polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
-        polyglot.subscribe(polyglot.STOP, self.stop)
-        polyglot.subscribe(polyglot.START, self.start, address)
-        polyglot.subscribe(polyglot.ADDNODEDONE, self.node_queue)
+        polyglot.subscribe(polyglot.CUSTOMPARAMS, parameterHandler)
+        polyglot.subscribe(polyglot.ADDNODEDONE, node_queue)
+        polyglot.subscribe(polyglot.STOP, stop)
+        polyglot.subscribe(polyglot.POLL, poll)
 
-        # start processing events and create add our controller node
+        # Start running
         polyglot.ready()
-        self.poly.addNode(self)
+        polyglot.setCustomParamsDoc()
+        polyglot.updateProfile()
 
-    '''
-    node_queue() and wait_for_node_event() create a simple way to wait
-    for a node to be created.  The nodeAdd() API call is asynchronous and
-    will return before the node is fully created. Using this, we can wait
-    until it is fully created before we try to use it.
-    '''
-    def node_queue(self, data):
-        self.n_queue.append(data['address'])
+        '''
+        Here we create the device node.  In a real node server we may
+        want to try and discover the device or devices and create nodes
+        based on what we find.  Here, we simply create our node and wait
+        for the add to complete.
+        '''
+        node = TestNode(polyglot, 'my_address', 'my_address', 'Counter')
+        polyglot.addNode(node)
+        wait_for_node_event()
 
-    def wait_for_node_done(self):
-        while len(self.n_queue) == 0:
-            time.sleep(0.1)
-        self.n_queue.pop()
-
-    '''
-    Read the user entered custom parameters.  Here is where the user will
-    configure the number of child nodes that they want created.
-    '''
-    def parameterHandler(self, params):
-        self.Parameters.load(params)
-        validChildren = False
-
-        if self.Parameters['nodes'] is not None:
-            if int(self.Parameters['nodes']) > 0:
-                validChildren = True
-            else:
-                LOGGER.error('Invalid number of nodes {}'.format(self.Parameters['nodes']))
-        else:
-            LOGGER.error('Missing number of node parameter')
-
-
-        if validChildren:
-           # self.createChildren(int(self.Parameters['nodes']))
-            self.poly.Notices.clear()
-        else:
-            self.poly.Notices['nodes'] = 'Please configure the number of child nodes to create.'
-
-
-    '''
-    This is called when the node is added to the interface module. It is
-    run in a separate thread.  This is only run once so you should do any
-    setup that needs to be run initially.  For example, if you need to
-    start a thread to monitor device status, do it here.
-
-    Here we load the custom parameter configuration document and push
-    the profiles to the ISY.
-    '''
-    def start(self):
-        self.poly.setCustomParamsDoc()
-        # Not necessary to call this since profile_version is used from server.json
-        self.poly.updateProfile()
-
+        # Just sit and wait for events
+        polyglot.runForever()
+    except (KeyboardInterrupt, SystemExit):
+        sys.exit(0)
