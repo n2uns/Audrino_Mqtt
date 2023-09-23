@@ -1,10 +1,10 @@
 {
     "name": "MQTT",
-    "docs": "https://github.com/n2uns/udi-mqtt-pg3",
+    "docs": "https://github.com/n2uns/Arduino_Mqtt",
     "type": "python3",
-    "executable": "mqtt-poly.py",
+    "executable": "main.py",
     "install": "install.sh",
-    "description": "MQTT NodeServer",
+    "description": "Arduino MQTT NodeServer",
     "notice": "",
     "logLevel": "INFO",
     "customParams": {
@@ -17,12 +17,12 @@
     "longPoll": "60",
     "credits": [
         {
-            "title": "NodeServer to integrate with MQTT Broker",
-            "author": "xKing",
-            "version": "0.0.13",
-            "date": "16 Aug, 2023",
-            "source": "https://github.com/n2uns/udi-mqtt-pg3",
-            "license": "https://github.com/n2uns/udi-mqtt-pg3/LICENSE"
+            "title": "NodeServer to integrate Arduino with MQTT Broker",
+            "author": "n2uns",
+            "version": "0.0.1",
+            "date": "23 Sep, 2023",
+            "source": "https://github.com/n2uns/Arduino_Mqtt",
+            "license": "https://github.com/n2uns/Arduino_Mqtt/LICENSE"
         }
     ]
 }
