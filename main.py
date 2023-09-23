@@ -72,7 +72,7 @@ def poll(polltype):
         if Parameters['multiplier'] is not None:
             mult = int(Parameters['multiplier'])
         else:
-            mult = 1
+            mult = 4
 
         node = polyglot.getNode('my_address')
         if node is not None:
