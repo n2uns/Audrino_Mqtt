@@ -107,7 +107,8 @@ if __name__ == "__main__":
         polyglot.subscribe(polyglot.ADDNODEDONE, node_queue)
         polyglot.subscribe(polyglot.STOP, stop)
         polyglot.subscribe(polyglot.POLL, poll)
-
+        # ************************   need to add in MQTT watch for tpoic infomation to see what nodes to add
+        #********************* then build the device of each one mybe one node for all IO
         # Start running
         polyglot.ready()
         polyglot.setCustomParamsDoc()
