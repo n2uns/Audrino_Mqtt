@@ -18,10 +18,10 @@ n_queue = []
 count = 0
 
 
-def _on_connect(self, mqttc, userdata, flags, rc):
+def _on_connect(mqttc, rc):
     if rc == 0:
         LOGGER.info("Poly MQTT Connected, subscribing...")
-        self.mqttc.is_connected = True
+        mqttc.is_connected = True
         mqttc.subscribe("mydevice/config")
         LOGGER.info(
                     "Subscribed to {} ".format("config")
