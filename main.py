@@ -18,17 +18,6 @@ n_queue = []
 count = 0
 
 
-def _on_connect(rc):
-    if rc == 0:
-        LOGGER.info("Poly MQTT Connected, subscribing...")
-        mqttc.is_connected = True
-        mqttc.subscribe("mydevice/config")
-        LOGGER.info(
-                    "Subscribed to {} ".format("config")
-                )
-    else:
-        LOGGER.error("Poly MQTT Connect failed")
-
 
 '''
 TestNode is the device class.  Our simple counter device
@@ -108,6 +97,17 @@ def stop():
     for n in nodes:
         nodes[n].setDriver('ST', 0, True, True)
     polyglot.stop()
+def _on_connect(rc):
+    if rc == 0:
+        LOGGER.info("Poly MQTT Connected, subscribing...")
+        mqttc.is_connected = True
+        mqttc.subscribe("mydevice/config")
+        LOGGER.info(
+                    "Subscribed to {} ".format("config")
+                )
+    else:
+        LOGGER.error("Poly MQTT Connect failed")
+
 
 if __name__ == "__main__":
     try:
