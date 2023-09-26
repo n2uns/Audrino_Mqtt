@@ -126,7 +126,6 @@ if __name__ == "__main__":
             mqttc.loop_start()
         except Exception as ex:
             LOGGER.error("Error connecting to Poly MQTT broker {}".format(ex))
-            return
 
         LOGGER.info("Start")
 
