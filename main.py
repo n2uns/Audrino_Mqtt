@@ -16,6 +16,22 @@ polyglot = None
 Parameters = None
 n_queue = []
 count = 0
+name = "MQTT Controller"
+address = "mqctrl"
+primary = address
+mqtt_server = "localhost"
+mqtt_port = 1883
+mqtt_user = None
+mqtt_password = None
+mqtt_server = Parameters["mqtt_server"] or 'localhost'
+mqtt_port = int(Parameters["mqtt_port"] or 1883)
+if Parameters["mqtt_user"] is None:
+    LOGGER.error("mqtt_user must be configured")
+if Parameters["mqtt_password"] is None:
+    LOGGER.error("mqtt_password must be configured")
+
+mqtt_user = Parameters["mqtt_user"]
+mqtt_password = Parameters["mqtt_password"]
 
 '''
 TestNode is the device class.  Our simple counter device
@@ -23,6 +39,7 @@ holds two values, the count and the count multiplied by a user defined
 multiplier. These get updated at every shortPoll interval
 '''
 class TestNode(udi_interface.Node):
+
     id = 'test'
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
