@@ -97,16 +97,16 @@ def stop():
     for n in nodes:
         nodes[n].setDriver('ST', 0, True, True)
     polyglot.stop()
-def _on_connect(rc):
+def _on_connect(self, mqttc, userdata, flags, rc):
     if rc == 0:
-        LOGGER.info("Poly MQTT Connected, subscribing...")
-        mqttc.is_connected = True
-        mqttc.subscribe("mydevice/config")
-        LOGGER.info(
+        self.LOGGER.info("Poly MQTT Connected, subscribing...")
+        self.mqttc.is_connected = True
+        self.mqttc.subscribe("mydevice/config")
+        self.LOGGER.info(
                     "Subscribed to {} ".format("config")
                 )
     else:
-        LOGGER.error("Poly MQTT Connect failed")
+        self.LOGGER.error("Poly MQTT Connect failed")
 
 
 if __name__ == "__main__":
