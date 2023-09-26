@@ -17,26 +17,26 @@ Parameters = None
 n_queue = []
 count = 0
 
-
-
 '''
 TestNode is the device class.  Our simple counter device
 holds two values, the count and the count multiplied by a user defined
 multiplier. These get updated at every shortPoll interval
 '''
-class TestNode(udi_interface.Node):
 
+
+class TestNode(udi_interface.Node):
     id = 'test'
     drivers = [
-            {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'GV0', 'value': 0, 'uom': 56},
-            {'driver': 'GV1', 'value': 0, 'uom': 56},
-            ]
+        {'driver': 'ST', 'value': 1, 'uom': 2},
+        {'driver': 'GV0', 'value': 0, 'uom': 56},
+        {'driver': 'GV1', 'value': 0, 'uom': 56},
+    ]
 
     def noop(self):
         LOGGER.info('Discover not implemented')
 
     commands = {'DISCOVER': noop}
+
 
 '''
 node_queue() and wait_for_node_event() create a simple way to wait
@@ -44,18 +44,24 @@ for a node to be created.  The nodeAdd() API call is asynchronous and
 will return before the node is fully created. Using this, we can wait
 until it is fully created before we try to use it.
 '''
+
+
 def node_queue(data):
     n_queue.append(data['address'])
+
 
 def wait_for_node_event():
     while len(n_queue) == 0:
         time.sleep(0.1)
     n_queue.pop()
 
+
 '''
 Read the user entered custom parameters. In this case, it is just
 the 'multiplier' value.  Save the parameters in the global 'Parameters'
 '''
+
+
 def parameterHandler(params):
     global Parameters
 
@@ -67,6 +73,8 @@ This is where the real work happens.  When we get a shortPoll, increment the
 count, report the current count in GV0 and the current count multiplied by
 the user defined value in GV1. Then display a notice on the dashboard.
 '''
+
+
 def poll(polltype):
     global count
     global Parameters
@@ -92,19 +100,23 @@ def poll(polltype):
 When we are told to stop, we update the node's status to False.  Since
 we don't have a 'controller', we have to do this ourselves.
 '''
+
+
 def stop():
     nodes = polyglot.getNodes()
     for n in nodes:
         nodes[n].setDriver('ST', 0, True, True)
     polyglot.stop()
+
+
 def _on_connect(self, mqttc, userdata, flags, rc):
     if rc == 0:
         self.LOGGER.info("Poly MQTT Connected, subscribing...")
         self.mqttc.is_connected = True
         self.mqttc.subscribe("mydevice/config")
         self.LOGGER.info(
-                    "Subscribed to {} ".format("config")
-                )
+            "Subscribed to {} ".format("config")
+        )
     else:
         self.LOGGER.error("Poly MQTT Connect failed")
 
@@ -122,16 +134,16 @@ if __name__ == "__main__":
         polyglot.subscribe(polyglot.STOP, stop)
         polyglot.subscribe(polyglot.POLL, poll)
         # ************************   need to add in MQTT watch for tpoic infomation to see what nodes to add
-        #********************* then build the device of each one mybe one node for all IO
+        # ********************* then build the device of each one mybe one node for all IO
         # Start running
         polyglot.ready()
         polyglot.setCustomParamsDoc()
         polyglot.updateProfile()
         mqttc = mqtt.Client()
         mqttc.on_connect = _on_connect
-        #mqttc.on_disconnect = _on_disconnect
-        #mqttc.on_message = _on_message
-        #mqttc.is_connected = False
+        # mqttc.on_disconnect = _on_disconnect
+        # mqttc.on_message = _on_message
+        # mqttc.is_connected = False
 
         mqttc.username_pw_set("admin", "kevin8386")
         try:
