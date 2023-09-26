@@ -17,6 +17,19 @@ Parameters = None
 n_queue = []
 count = 0
 
+
+def _on_connect(self, mqttc, userdata, flags, rc):
+    if rc == 0:
+        LOGGER.info("Poly MQTT Connected, subscribing...")
+        self.mqttc.is_connected = True
+        mqttc.subscribe("mydevice/config")
+        LOGGER.info(
+                    "Subscribed to {} ".format("config")
+                )
+    else:
+        LOGGER.error("Poly MQTT Connect failed")
+
+
 '''
 TestNode is the device class.  Our simple counter device
 holds two values, the count and the count multiplied by a user defined
@@ -115,7 +128,7 @@ if __name__ == "__main__":
         polyglot.setCustomParamsDoc()
         polyglot.updateProfile()
         mqttc = mqtt.Client()
-        #mqttc.on_connect = _on_connect
+        mqttc.on_connect = _on_connect
         #mqttc.on_disconnect = _on_disconnect
         #mqttc.on_message = _on_message
         #mqttc.is_connected = False
