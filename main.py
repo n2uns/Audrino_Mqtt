@@ -109,7 +109,7 @@ def stop():
     polyglot.stop()
 
 
-def _on_connect(self, mqttc, userdata, flags, rc):
+def on_connect(self, mqttc, userdata, flags, rc):
     if rc == 0:
         self.LOGGER.info("Poly MQTT Connected, subscribing...")
         self.mqttc.is_connected = True
@@ -140,7 +140,7 @@ if __name__ == "__main__":
         polyglot.setCustomParamsDoc()
         polyglot.updateProfile()
         mqttc = mqtt.Client()
-        mqttc.on_connect = _on_connect
+        mqttc.on_connect = on_connect
         # mqttc.on_disconnect = _on_disconnect
         # mqttc.on_message = _on_message
         # mqttc.is_connected = False
