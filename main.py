@@ -123,9 +123,9 @@ def on_connect(client, none, flags, rc):
     if rc == 0:
         LOGGER.info("Poly MQTT Connected, subscribing...")
         mqttc.is_connected = True
-        mqttc.subscribe("mydevice/status")
+        mqttc.subscribe("mydevice")
         LOGGER.info(
-            "Subscribed to {} ".format("config")
+            "Subscribed to {} ".format("status")
         )
     else:
         LOGGER.error("Poly MQTT Connect failed")
