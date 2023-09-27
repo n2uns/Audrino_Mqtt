@@ -129,6 +129,10 @@ def on_connect(client, none, flags, rc):
         )
     else:
         LOGGER.error("Poly MQTT Connect failed")
+def on_message(client, userdata, message):
+    LOGGER.info("Received message '" + str(message.payload) + "' on topic '"
+        + message.topic + "' with QoS " + str(message.qos))
+
 
 
 if __name__ == "__main__":
