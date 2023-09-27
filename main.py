@@ -161,7 +161,7 @@ if __name__ == "__main__":
 
         mqttc.username_pw_set("n2uns", "kevin8386")
         try:
-            mqttc.connect("192.168.18.185", 1884, 10)
+            mqttc.connect("192.168.18.18", 1884, 10)
             mqttc.loop_start()
         except Exception as ex:
             LOGGER.error("Error connecting to Poly MQTT broker {}".format(ex))
