@@ -109,16 +109,16 @@ def stop():
     polyglot.stop()
 
 
-def on_connect(self, mqttc, userdata, flags, rc):
+def on_connect(client, none, userdata, flags, rc):
     if rc == 0:
-        self.LOGGER.info("Poly MQTT Connected, subscribing...")
-        self.mqttc.is_connected = True
-        self.mqttc.subscribe("mydevice/config")
-        self.LOGGER.info(
+        LOGGER.info("Poly MQTT Connected, subscribing...")
+        mqttc.is_connected = True
+        mqttc.subscribe("mydevice/config")
+        LOGGER.info(
             "Subscribed to {} ".format("config")
         )
     else:
-        self.LOGGER.error("Poly MQTT Connect failed")
+        LOGGER.error("Poly MQTT Connect failed")
 
 
 if __name__ == "__main__":
