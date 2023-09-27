@@ -108,6 +108,16 @@ def stop():
         nodes[n].setDriver('ST', 0, True, True)
     polyglot.stop()
 
+    def on_disconnect(client, userdata, rc):
+        mqttc.is_connected = False
+        if rc != 0:
+            LOGGER.warning("Poly MQTT disconnected, trying to re-connect")
+            try:
+                mqttc.reconnect()
+            except Exception as ex:
+                LOGGER.error("Error connecting to Poly MQTT broker {}".format(ex))
+        else:
+            LOGGER.info("Poly MQTT graceful disconnection")
 
 def on_connect(client, none, flags, rc):
     if rc == 0:
