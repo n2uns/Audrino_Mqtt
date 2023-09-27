@@ -123,7 +123,7 @@ def on_connect(client, none, flags, rc):
     if rc == 0:
         LOGGER.info("Poly MQTT Connected, subscribing...")
         mqttc.is_connected = True
-        mqttc.subscribe("mydevice/config")
+        mqttc.subscribe("mydevice/status")
         LOGGER.info(
             "Subscribed to {} ".format("config")
         )
