@@ -127,6 +127,7 @@ def on_connect(client, none, flags, rc):
         LOGGER.info(
             "Subscribed to {} ".format("status")
         )
+        mqttc.publish("mydevice/test", "this my test", qos=0, retain=False)
     else:
         LOGGER.error("Poly MQTT Connect failed")
 def on_message(client, userdata, message):
