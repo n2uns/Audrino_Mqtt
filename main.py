@@ -9,6 +9,7 @@ import udi_interface
 import sys
 import paho.mqtt.client as mqtt
 import json
+import time
 
 LOGGER = udi_interface.LOGGER
 
@@ -44,6 +45,7 @@ class Controller(udi_interface.Node):
         self.INFO1 = None
         self.setup = 0
         self.mqtt_topic = None
+        self.valid_configuration = False
 
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
@@ -54,6 +56,9 @@ class Controller(udi_interface.Node):
         polyglot.ready()
         # start mqtt
         polyglot.updateProfile()
+        while self.valid_configuration is False:
+            LOGGER.info('Waiting on valid configuration')
+            time.sleep(5)
         self.mqttc = mqtt.Client()
         self.mqttc.on_connect = self.on_connect
         LOGGER.info("Start2")
@@ -62,8 +67,8 @@ class Controller(udi_interface.Node):
         self.mqttc.is_connected = False
         LOGGER.info("Start3")
 
-        self.mqttc.username_pw_set("n2uns", "kevin8386")
-        self.mqttc.connect("192.168.18.185", 1884, 60)
+        self.mqttc.username_pw_set(self.mqtt_user, self.mqtt_password)
+        self.mqttc.connect(self.mqtt_server, self.mqtt_port, 60)
         LOGGER.info("Start4")
         self.mqttc.loop_start()
         self.poly.addNode(self)
@@ -86,6 +91,7 @@ class Controller(udi_interface.Node):
         # ***************************************    read in the topic from config
         self.mqtt_topic = self.Parameters["mqtt_topic"]
         LOGGER.info("prams updted")
+
     '''
     This is called when the node is added to the interface module. It is
     run in a separate thread.  This is only run once so you should do any
@@ -149,7 +155,7 @@ class Controller(udi_interface.Node):
         if rc == 0:
             LOGGER.info("Poly MQTT Connected, subscribing...")
             self.mqttc.is_connected = True
-            result = self.mqttc.subscribe("mydevice/status")
+            result = self.mqttc.subscribe(self.mqtt_topic)
             if result[0] == 0:
                 LOGGER.info(
                     "Subscribed to {} ".format("status")
