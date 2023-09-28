@@ -160,11 +160,11 @@ if __name__ == "__main__":
     try:
 
 
-        polyglot = udi_interface.Interface([])
-        polyglot.start()
 
 
         def __init__(self, polyglot, primary, address, name):
+            self.polyglot = udi_interface.Interface([])
+            self.polyglot.start()
 
             self.Parameters = Custom(polyglot, 'customparams')
 
@@ -186,13 +186,14 @@ if __name__ == "__main__":
             self.mqttc.is_connected = False
 
             self.mqttc.username_pw_set("n2uns", "kevin8386")
-            self.mqttc.connect(self.mqtt_server, 1884, 60)
+            self.mqttc.connect("192.168.18.185", 1884, 60)
             self.mqttc.loop_start()
             node = TestNode(polyglot, 'my_address', 'my_address', 'Counter')
             self.polyglot.addNode(node)
             wait_for_node_event()
 
-            LOGGER.info("Start")
+            self.LOGGER.info("Start")
+            self.polyglot.runForever()
 
         '''
         Here we create the device node.  In a real node server we may
@@ -202,6 +203,5 @@ if __name__ == "__main__":
         '''
 
         # Just sit and wait for events
-        polyglot.runForever()
     except (KeyboardInterrupt, SystemExit):
         sys.exit(0)
