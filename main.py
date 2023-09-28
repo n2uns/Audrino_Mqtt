@@ -176,7 +176,7 @@ if __name__ == "__main__":
         polyglot.start()
 
         # Create the controller node
-        Controller(polyglot, 'controller', 'controller', 'Counter')
+        Controller(polyglot, 'controller', 'controller', 'Arduino MQTT')
 
         # Just sit and wait for events
         polyglot.runForever()
