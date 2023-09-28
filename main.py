@@ -178,21 +178,27 @@ if __name__ == "__main__":
         # Start running
             self.polyglot.ready()
             self.polyglot.setCustomParamsDoc()
+            self.LOGGER.info("Start1")
             self.polyglot.updateProfile()
             self.mqttc = mqtt.Client()
             self.mqttc.on_connect = self.on_connect
+            self.LOGGER.info("Start2")
             self.on_disconnect = self.on_disconnect
             self.mqttc.on_message = self.on_message
             self.mqttc.is_connected = False
+            self.LOGGER.info("Start3")
 
             self.mqttc.username_pw_set("n2uns", "kevin8386")
             self.mqttc.connect("192.168.18.185", 1884, 60)
+            self.LOGGER.info("Start4")
             self.mqttc.loop_start()
             node = TestNode(polyglot, 'my_address', 'my_address', 'Counter')
+            self.LOGGER.info("Start5")
             self.polyglot.addNode(node)
+            self.LOGGER.info("Start6")
             wait_for_node_event()
 
-            self.LOGGER.info("Start")
+            self.LOGGER.info("Start7")
             self.polyglot.runForever()
 
         '''
