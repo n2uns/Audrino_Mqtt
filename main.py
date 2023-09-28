@@ -156,7 +156,7 @@ class Controller(udi_interface.Node):
             )
         else:
             LOGGER.error("Poly MQTT Connect failed")
-    def on_message(client, userdata, message):
+    def on_message(self, client, userdata, message):
         LOGGER.info("Received message '" + str(message.payload) + "' on topic '"
             + message.topic + "' with QoS " + str(message.qos))
 
