@@ -161,7 +161,7 @@ if __name__ == "__main__":
         mqttc = mqtt.Client()
         mqttc.on_connect = on_connect
         on_disconnect = on_disconnect
-        # mqttc.on_message = _on_message
+        mqttc.on_message = on_message
         mqttc.is_connected = False
 
         mqttc.username_pw_set("n2uns", "kevin8386")
