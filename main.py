@@ -157,13 +157,12 @@ def on_message(client, userdata, message):
 
 
 if __name__ == "__main__":
-    try:
 
-       polyglot = udi_interface.Interface([])
-       polyglot.start()
+    polyglot = udi_interface.Interface([])
+    polyglot.start()
 
 
-        def __init__(self, polyglot, primary, address, name):
+    def __init__(self, polyglot, primary, address, name):
 
             self.Parameters = Custom(polyglot, 'customparams')
 
@@ -198,15 +197,13 @@ if __name__ == "__main__":
             wait_for_node_event()
 
             self.LOGGER.info("Start7")
-        polyglot.runForever()
 
-        '''
+            '''
         Here we create the device node.  In a real node server we may
         want to try and discover the device or devices and create nodes
         based on what we find.  Here, we simply create our node and wait
         for the add to complete.
         '''
 
+    polyglot.runForever()
         # Just sit and wait for events
-    except (KeyboardInterrupt, SystemExit):
-        sys.exit(0)
