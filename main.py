@@ -159,12 +159,11 @@ def on_message(client, userdata, message):
 if __name__ == "__main__":
     try:
 
-
+       polyglot = udi_interface.Interface([])
+       polyglot.start()
 
 
         def __init__(self, polyglot, primary, address, name):
-            self.polyglot = udi_interface.Interface([])
-            self.polyglot.start()
 
             self.Parameters = Custom(polyglot, 'customparams')
 
@@ -199,7 +198,7 @@ if __name__ == "__main__":
             wait_for_node_event()
 
             self.LOGGER.info("Start7")
-            self.polyglot.runForever()
+        polyglot.runForever()
 
         '''
         Here we create the device node.  In a real node server we may
