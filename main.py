@@ -16,13 +16,6 @@ polyglot = None
 Parameters = None
 n_queue = []
 count = 0
-name = "My Device"
-address = "mqctrl"
-mqtt_server = "localhost"
-mqtt_port = 1883
-mqtt_user = None
-mqtt_password = None
-mqtt_topic = None
 
 '''
 TestNode is the device class.  Our simple counter device
@@ -69,23 +62,30 @@ the 'multiplier' value.  Save the parameters in the global 'Parameters'
 '''
 
 
-def parameterHandler(params):
-    global Parameters
+def parameterHandler(self, params):
+    self.name = "My Device"
+    self.address = "mqctrl"
+    self.mqtt_server = "localhost"
+    self.mqtt_port = 1883
+    self.mqtt_user = None
+    self.mqtt_password = None
+    self.mqtt_topic = None
 
-    Parameters.load(params)
+    self.poly.Notices.clear()
+    self.Parameters.load(params)
 
 
-mqtt_server = Parameters["mqtt_server"] or 'localhost'
-mqtt_port = int(Parameters["mqtt_port"] or 1883)
-if Parameters["mqtt_user"] is None:
-    LOGGER.error("mqtt_user must be configured")
-if Parameters["mqtt_password"] is None:
-    LOGGER.error("mqtt_password must be configured")
+    self.mqtt_server = Parameters["mqtt_server"] or 'localhost'
+    self.mqtt_port = int(Parameters["mqtt_port"] or 1883)
+    if Parameters["mqtt_user"] is None:
+        LOGGER.error("mqtt_user must be configured")
+    if Parameters["mqtt_password"] is None:
+        LOGGER.error("mqtt_password must be configured")
 
-mqtt_user = Parameters["mqtt_user"]
-mqtt_password = Parameters["mqtt_password"]
+    self.mqtt_user = Parameters["mqtt_user"]
+    self.mqtt_password = Parameters["mqtt_password"]
 # ***************************************    read in the topic from config
-mqtt_topic = Parameters["mqtt_topic"]
+    self.mqtt_topic = Parameters["mqtt_topic"]
 
 
 '''
@@ -166,7 +166,7 @@ if __name__ == "__main__":
 
         def __init__(self, polyglot, primary, address, name):
 
-            Parameters = Custom(polyglot, 'customparams')
+            self.Parameters = Custom(polyglot, 'customparams')
 
         # subscribe to the events we want
             self.polyglot.subscribe(polyglot.CUSTOMPARAMS, parameterHandler)
@@ -186,7 +186,7 @@ if __name__ == "__main__":
             self.mqttc.is_connected = False
 
             self.mqttc.username_pw_set("n2uns", "kevin8386")
-            self.mqttc.connect("192.168.18.185", 1884, 60)
+            self.mqttc.connect(self.mqtt_server, 1884, 60)
             self.mqttc.loop_start()
 
         LOGGER.info("Start")
