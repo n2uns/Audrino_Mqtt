@@ -123,11 +123,15 @@ def on_connect(client, none, flags, rc):
     if rc == 0:
         LOGGER.info("Poly MQTT Connected, subscribing...")
         mqttc.is_connected = True
-        mqttc.subscribe("mydevice/#")
-        LOGGER.info(
-            "Subscribed to {} ".format("status")
+        result = mqttc.subscribe("mydevice/status")
+        if result[0] == 0:
+            LOGGER.info("Topic is ght ")
+            LOGGER.info(
+                "Subscribed to {} ".format("status")
         )
-        mqttc.publish("mydevice/test", "this my test", qos=0, retain=False)
+#        else:
+#            LOGGER.error("Poly MQTT Connect failed")
+#            mqttc.publish("mydevice/test", "this my test", qos=0, retain=False)
     else:
         LOGGER.error("Poly MQTT Connect failed")
 def on_message(client, userdata, message):
