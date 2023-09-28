@@ -123,7 +123,7 @@ def on_connect(client, none, flags, rc):
     if rc == 0:
         LOGGER.info("Poly MQTT Connected, subscribing...")
         mqttc.is_connected = True
-        mqttc.subscribe("mydevice")
+        mqttc.subscribe("mydevice/status")
         LOGGER.info(
             "Subscribed to {} ".format("status")
         )
@@ -157,11 +157,11 @@ if __name__ == "__main__":
         mqttc.on_connect = on_connect
         on_disconnect = on_disconnect
         # mqttc.on_message = _on_message
-        # mqttc.is_connected = False
+        mqttc.is_connected = False
 
         mqttc.username_pw_set("n2uns", "kevin8386")
         try:
-            mqttc.connect("192.168.18.18", 1884, 10)
+            mqttc.connect("192.168.18.185", 1884, 60)
             mqttc.loop_start()
         except Exception as ex:
             LOGGER.error("Error connecting to Poly MQTT broker {}".format(ex))
