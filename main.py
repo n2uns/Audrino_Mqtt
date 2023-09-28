@@ -91,6 +91,7 @@ class Controller(udi_interface.Node):
         # ***************************************    read in the topic from config
         self.mqtt_topic = self.Parameters["mqtt_topic"]
         LOGGER.info("prams updted")
+        self.valid_configuration = True
 
     '''
     This is called when the node is added to the interface module. It is
