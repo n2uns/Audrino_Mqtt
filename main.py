@@ -24,7 +24,7 @@ multiplier. These get updated at every shortPoll interval
 '''
 
 
-class TestNode(udi_interface.Node):
+class TestNode( udi_interface.Node):
     id = 'test'
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2},
@@ -189,7 +189,7 @@ if __name__ == "__main__":
             self.mqttc.connect(self.mqtt_server, 1884, 60)
             self.mqttc.loop_start()
 
-        LOGGER.info("Start")
+            LOGGER.info("Start")
 
         '''
         Here we create the device node.  In a real node server we may
