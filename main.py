@@ -46,8 +46,8 @@ until it is fully created before we try to use it.
 '''
 
 
-def node_queue(data):
-    n_queue.append(data['address'])
+def node_queue(self, data):
+    self.n_queue.append(data['address'])
 
 
 def wait_for_node_event():
@@ -95,25 +95,25 @@ the user defined value in GV1. Then display a notice on the dashboard.
 '''
 
 
-def poll(polltype):
+def poll(self, polltype):
     global count
     global Parameters
 
     if 'shortPoll' in polltype:
-        if Parameters['multiplier'] is not None:
-            mult = int(Parameters['multiplier'])
+        if self.Parameters['multiplier'] is not None:
+            mult = int(self.Parameters['multiplier'])
         else:
             mult = 4
 
-        node = polyglot.getNode('my_address')
-        if node is not None:
+        self.node = self.polyglot.getNode('my_address')
+        if self.node is not None:
             count += 1
 
-            node.setDriver('GV0', count, True, True)
-            node.setDriver('GV1', (count * mult), True, True)
+            self.node.setDriver('GV0', count, True, True)
+            self.node.setDriver('GV1', (count * mult), True, True)
 
             # be fancy and display a notice on the polyglot dashboard
-            polyglot.Notices['count'] = 'Current count is {}'.format(count)
+            self.polyglot.Notices['count'] = 'Current count is {}'.format(count)
 
 
 '''
@@ -188,6 +188,9 @@ if __name__ == "__main__":
             self.mqttc.username_pw_set("n2uns", "kevin8386")
             self.mqttc.connect(self.mqtt_server, 1884, 60)
             self.mqttc.loop_start()
+            node = TestNode(polyglot, 'my_address', 'my_address', 'Counter')
+            self.polyglot.addNode(node)
+            wait_for_node_event()
 
             LOGGER.info("Start")
 
@@ -197,9 +200,6 @@ if __name__ == "__main__":
         based on what we find.  Here, we simply create our node and wait
         for the add to complete.
         '''
-        node = TestNode(polyglot, 'my_address', 'my_address', 'Counter')
-        polyglot.addNode(node)
-        wait_for_node_event()
 
         # Just sit and wait for events
         polyglot.runForever()
