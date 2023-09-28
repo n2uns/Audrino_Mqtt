@@ -181,7 +181,7 @@ CMD-DIMMER-FDDOWN-NAME = Dim
 #FANSET-2 = Medium
 #FANSET-3 = High
 
-ND-test-NAME = Example - Counter
+ND-test-NAME = Example - MyDevice
 ND-test-ICON = Output
 ST-str-ST-NAME = NodeServer Online
 ST-str-GV0-NAME = raw data 0

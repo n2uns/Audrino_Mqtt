@@ -16,6 +16,13 @@ polyglot = None
 Parameters = None
 n_queue = []
 count = 0
+name = "My Device"
+address = "mqctrl"
+mqtt_server = "localhost"
+mqtt_port = 1883
+mqtt_user = None
+mqtt_password = None
+mqtt_topic = None
 
 '''
 TestNode is the device class.  Our simple counter device
@@ -68,6 +75,19 @@ def parameterHandler(params):
     Parameters.load(params)
 
 
+mqtt_server = Parameters["mqtt_server"] or 'localhost'
+mqtt_port = int(Parameters["mqtt_port"] or 1883)
+if Parameters["mqtt_user"] is None:
+    LOGGER.error("mqtt_user must be configured")
+if Parameters["mqtt_password"] is None:
+    LOGGER.error("mqtt_password must be configured")
+
+mqtt_user = Parameters["mqtt_user"]
+mqtt_password = Parameters["mqtt_password"]
+# ***************************************    read in the topic from config
+mqtt_topic = Parameters["mqtt_topic"]
+
+
 '''
 This is where the real work happens.  When we get a shortPoll, increment the
 count, report the current count in GV0 and the current count multiplied by
@@ -108,30 +128,26 @@ def stop():
         nodes[n].setDriver('ST', 0, True, True)
     polyglot.stop()
 
-def on_disconnect(client, userdata, rc):
-    mqttc.is_connected = False
+def on_disconnect(self, client, userdata, rc):
+    self.mqttc.is_connected = False
     if rc != 0:
         LOGGER.warning("Poly MQTT disconnected, trying to re-connect")
         try:
-            mqttc.reconnect()
+            self.mqttc.reconnect()
         except Exception as ex:
             LOGGER.error("Error connecting to Poly MQTT broker {}".format(ex))
     else:
         LOGGER.info("Poly MQTT graceful disconnection")
 
-def on_connect(client, none, flags, rc):
+def on_connect(self, client, none, flags, rc):
     if rc == 0:
         LOGGER.info("Poly MQTT Connected, subscribing...")
-        mqttc.is_connected = True
-        result = mqttc.subscribe("mydevice/status")
+        self.mqttc.is_connected = True
+        result = self.mqttc.subscribe("mydevice/status")
         if result[0] == 0:
-            LOGGER.info("Topic is ght ")
             LOGGER.info(
                 "Subscribed to {} ".format("status")
         )
-#        else:
-#            LOGGER.error("Poly MQTT Connect failed")
-#            mqttc.publish("mydevice/test", "this my test", qos=0, retain=False)
     else:
         LOGGER.error("Poly MQTT Connect failed")
 def on_message(client, userdata, message):
@@ -142,34 +158,36 @@ def on_message(client, userdata, message):
 
 if __name__ == "__main__":
     try:
+
+
         polyglot = udi_interface.Interface([])
         polyglot.start()
 
-        Parameters = Custom(polyglot, 'customparams')
+
+        def __init__(self, polyglot, primary, address, name):
+
+            Parameters = Custom(polyglot, 'customparams')
 
         # subscribe to the events we want
-        polyglot.subscribe(polyglot.CUSTOMPARAMS, parameterHandler)
-        polyglot.subscribe(polyglot.ADDNODEDONE, node_queue)
-        polyglot.subscribe(polyglot.STOP, stop)
-        polyglot.subscribe(polyglot.POLL, poll)
+            self.polyglot.subscribe(polyglot.CUSTOMPARAMS, parameterHandler)
+            self.polyglot.subscribe(polyglot.ADDNODEDONE, node_queue)
+            self.polyglot.subscribe(polyglot.STOP, stop)
+            self.polyglot.subscribe(polyglot.POLL, poll)
         # ************************   need to add in MQTT watch for tpoic infomation to see what nodes to add
         # ********************* then build the device of each one mybe one node for all IO
         # Start running
-        polyglot.ready()
-        polyglot.setCustomParamsDoc()
-        polyglot.updateProfile()
-        mqttc = mqtt.Client()
-        mqttc.on_connect = on_connect
-        on_disconnect = on_disconnect
-        mqttc.on_message = on_message
-        mqttc.is_connected = False
+            self.polyglot.ready()
+            self.polyglot.setCustomParamsDoc()
+            self.polyglot.updateProfile()
+            self.mqttc = mqtt.Client()
+            self.mqttc.on_connect = self.on_connect
+            self.on_disconnect = self.on_disconnect
+            self.mqttc.on_message = self.on_message
+            self.mqttc.is_connected = False
 
-        mqttc.username_pw_set("n2uns", "kevin8386")
-        try:
-            mqttc.connect("192.168.18.185", 1884, 60)
-            mqttc.loop_start()
-        except Exception as ex:
-            LOGGER.error("Error connecting to Poly MQTT broker {}".format(ex))
+            self.mqttc.username_pw_set("n2uns", "kevin8386")
+            self.mqttc.connect(self.mqqt_server, 1884, 60)
+            self.mqttc.loop_start()
 
         LOGGER.info("Start")
 

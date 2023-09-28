@@ -1,16 +1,63 @@
-2023-09-27 18:00:19,318 MainThread udi_interface      INFO     polylogger:set_basic_config: set_basic_config: enable=True level=30
-2023-09-27 18:00:19,321 MainThread udi_interface      INFO     __init__:<module>: UDI interface initializing
-2023-09-27 18:00:19,321 MainThread udi_interface      INFO     __init__:<module>: User=None
-2023-09-27 18:00:19,321 MainThread udi_interface      INFO     __init__:<module>: Home=C:\Users\kg828
-2023-09-27 18:00:19,321 MainThread udi_interface      INFO     __init__:<module>: Node Server Path=C:\Users\kg828\PycharmProjects\Audrino_Mqtt
-2023-09-27 18:00:19,321 MainThread udi_interface      INFO     __init__:<module>: PG3INIT=Not set
-2023-09-27 18:00:19,322 MainThread udi_interface      INFO     __init__:<module>: Loading interface module
-2023-09-27 18:00:19,349 MainThread udi_interface      INFO     interface:<module>: Loading MQTT module
-2023-09-27 18:00:19,396 MainThread udi_interface      INFO     interface:<module>: MQTT module loaded
-2023-09-27 18:00:19,577 MainThread udi_interface      INFO     __init__:<module>: Loading udi_interface module
-2023-09-27 18:00:19,578 MainThread udi_interface      INFO     __init__:<module>: Loading node module
-2023-09-27 18:00:19,578 MainThread udi_interface      INFO     __init__:<module>: Loading custom module
-2023-09-27 18:00:19,578 MainThread udi_interface      INFO     __init__:<module>: Loading isy module
-2023-09-27 18:00:19,579 MainThread udi_interface      INFO     __init__:<module>: UDI interface initialized
-2023-09-27 18:00:19,579 MainThread udi_interface      INFO     __init__:<module>: UDI Python Interface for Polyglot version 3 3.2.2 Starting...
-2023-09-27 18:00:19,596 MainThread udi_interface.interface CRITICAL interface:__init__: Failed to parse init. Exiting...
+2023-09-28 16:23:09,646 MainThread udi_interface      INFO     polylogger:set_basic_config: set_basic_config: enable=True level=30
+2023-09-28 16:23:09,648 MainThread udi_interface      INFO     __init__:<module>: UDI interface initializing
+2023-09-28 16:23:09,648 MainThread udi_interface      INFO     __init__:<module>: User=None
+2023-09-28 16:23:09,648 MainThread udi_interface      INFO     __init__:<module>: Home=C:\Users\kg828
+2023-09-28 16:23:09,648 MainThread udi_interface      INFO     __init__:<module>: Node Server Path=C:\Users\kg828\PycharmProjects\Audrino_Mqtt
+2023-09-28 16:23:09,648 MainThread udi_interface      INFO     __init__:<module>: PG3INIT=Not set
+2023-09-28 16:23:09,648 MainThread udi_interface      INFO     __init__:<module>: Loading interface module
+2023-09-28 16:23:09,677 MainThread udi_interface      INFO     interface:<module>: Loading MQTT module
+2023-09-28 16:23:09,726 MainThread udi_interface      INFO     interface:<module>: MQTT module loaded
+2023-09-28 16:23:09,917 MainThread udi_interface      INFO     __init__:<module>: Loading udi_interface module
+2023-09-28 16:23:09,917 MainThread udi_interface      INFO     __init__:<module>: Loading node module
+2023-09-28 16:23:09,918 MainThread udi_interface      INFO     __init__:<module>: Loading custom module
+2023-09-28 16:23:09,918 MainThread udi_interface      INFO     __init__:<module>: Loading isy module
+2023-09-28 16:23:09,918 MainThread udi_interface      INFO     __init__:<module>: UDI interface initialized
+2023-09-28 16:23:09,918 MainThread udi_interface      INFO     __init__:<module>: UDI Python Interface for Polyglot version 3 3.2.2 Starting...
+2023-09-28 16:23:09,937 MainThread udi_interface      ERROR    udi_interface:write: Traceback (most recent call last):
+2023-09-28 16:23:09,938 MainThread udi_interface      ERROR    udi_interface:write: File "C:\Users\kg828\PycharmProjects\Audrino_Mqtt\main.py", line 78, in <module>
+2023-09-28 16:23:09,938 MainThread udi_interface      ERROR    udi_interface:write: mqtt_server = Parameters["mqtt_server"] or 'localhost'
+2023-09-28 16:23:09,938 MainThread udi_interface      ERROR    udi_interface:write: TypeError
+2023-09-28 16:23:09,938 MainThread udi_interface      ERROR    udi_interface:write: :
+2023-09-28 16:23:09,939 MainThread udi_interface      ERROR    udi_interface:write: 'NoneType' object is not subscriptable
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     polylogger:set_basic_config: set_basic_config: enable=True level=30
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     __init__:<module>: UDI interface initializing
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     __init__:<module>: User=None
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     __init__:<module>: Home=C:\Users\kg828
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     __init__:<module>: Node Server Path=C:\Users\kg828\PycharmProjects\Audrino_Mqtt
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     __init__:<module>: PG3INIT=Not set
+2023-09-28 16:23:16,991 MainThread udi_interface      INFO     __init__:<module>: Loading interface module
+2023-09-28 16:23:17,014 MainThread udi_interface      INFO     interface:<module>: Loading MQTT module
+2023-09-28 16:23:17,052 MainThread udi_interface      INFO     interface:<module>: MQTT module loaded
+2023-09-28 16:23:17,157 MainThread udi_interface      INFO     __init__:<module>: Loading udi_interface module
+2023-09-28 16:23:17,157 MainThread udi_interface      INFO     __init__:<module>: Loading node module
+2023-09-28 16:23:17,157 MainThread udi_interface      INFO     __init__:<module>: Loading custom module
+2023-09-28 16:23:17,157 MainThread udi_interface      INFO     __init__:<module>: Loading isy module
+2023-09-28 16:23:17,157 MainThread udi_interface      INFO     __init__:<module>: UDI interface initialized
+2023-09-28 16:23:17,157 MainThread udi_interface      INFO     __init__:<module>: UDI Python Interface for Polyglot version 3 3.2.2 Starting...
+2023-09-28 16:23:17,167 MainThread udi_interface      ERROR    udi_interface:write: Traceback (most recent call last):
+2023-09-28 16:23:17,167 MainThread udi_interface      ERROR    udi_interface:write: File "C:\Users\kg828\PycharmProjects\Audrino_Mqtt\main.py", line 78, in <module>
+2023-09-28 16:23:17,168 MainThread udi_interface      ERROR    udi_interface:write: mqtt_server = Parameters["mqtt_server"] or 'localhost'
+2023-09-28 16:23:17,168 MainThread udi_interface      ERROR    udi_interface:write: TypeError
+2023-09-28 16:23:17,168 MainThread udi_interface      ERROR    udi_interface:write: :
+2023-09-28 16:23:17,168 MainThread udi_interface      ERROR    udi_interface:write: 'NoneType' object is not subscriptable
+2023-09-28 16:24:43,704 MainThread udi_interface      INFO     polylogger:set_basic_config: set_basic_config: enable=True level=30
+2023-09-28 16:24:43,704 MainThread udi_interface      INFO     __init__:<module>: UDI interface initializing
+2023-09-28 16:24:43,704 MainThread udi_interface      INFO     __init__:<module>: User=None
+2023-09-28 16:24:43,704 MainThread udi_interface      INFO     __init__:<module>: Home=C:\Users\kg828
+2023-09-28 16:24:43,705 MainThread udi_interface      INFO     __init__:<module>: Node Server Path=C:\Users\kg828\PycharmProjects\Audrino_Mqtt
+2023-09-28 16:24:43,705 MainThread udi_interface      INFO     __init__:<module>: PG3INIT=Not set
+2023-09-28 16:24:43,705 MainThread udi_interface      INFO     __init__:<module>: Loading interface module
+2023-09-28 16:24:43,731 MainThread udi_interface      INFO     interface:<module>: Loading MQTT module
+2023-09-28 16:24:43,769 MainThread udi_interface      INFO     interface:<module>: MQTT module loaded
+2023-09-28 16:24:43,876 MainThread udi_interface      INFO     __init__:<module>: Loading udi_interface module
+2023-09-28 16:24:43,876 MainThread udi_interface      INFO     __init__:<module>: Loading node module
+2023-09-28 16:24:43,876 MainThread udi_interface      INFO     __init__:<module>: Loading custom module
+2023-09-28 16:24:43,876 MainThread udi_interface      INFO     __init__:<module>: Loading isy module
+2023-09-28 16:24:43,876 MainThread udi_interface      INFO     __init__:<module>: UDI interface initialized
+2023-09-28 16:24:43,876 MainThread udi_interface      INFO     __init__:<module>: UDI Python Interface for Polyglot version 3 3.2.2 Starting...
+2023-09-28 16:24:43,887 MainThread udi_interface      ERROR    udi_interface:write: Traceback (most recent call last):
+2023-09-28 16:24:43,887 MainThread udi_interface      ERROR    udi_interface:write: File "C:\Users\kg828\PycharmProjects\Audrino_Mqtt\main.py", line 78, in <module>
+2023-09-28 16:24:43,887 MainThread udi_interface      ERROR    udi_interface:write: mqtt_server = Parameters["mqtt_server"] or 'localhost'
+2023-09-28 16:24:43,887 MainThread udi_interface      ERROR    udi_interface:write: TypeError
+2023-09-28 16:24:43,888 MainThread udi_interface      ERROR    udi_interface:write: :
+2023-09-28 16:24:43,888 MainThread udi_interface      ERROR    udi_interface:write: 'NoneType' object is not subscriptable
