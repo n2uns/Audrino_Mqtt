@@ -186,7 +186,7 @@ if __name__ == "__main__":
             self.mqttc.is_connected = False
 
             self.mqttc.username_pw_set("n2uns", "kevin8386")
-            self.mqttc.connect(self.mqqt_server, 1884, 60)
+            self.mqttc.connect("192.168.18.185", 1884, 60)
             self.mqttc.loop_start()
 
         LOGGER.info("Start")
