@@ -91,7 +91,9 @@ class Controller(udi_interface.Node):
         self.mqtt_password = self.Parameters["mqtt_password"]
         # ***************************************    read in the topic from config
         self.mqtt_topic = self.Parameters["mqtt_topic"]
-        self.mqtt_topic_cmd = "tele/{}/INFO1".format(self.Parameters["mqtt_topic"])
+        self.mqtt_topic_cmd = "{}/cmd".format(self.Parameters["mqtt_topic"])
+        self.mqtt_topic_status = "{}/status".format(self.Parameters["mqtt_topic"])
+        self.mqtt_topic_Discovery = "{}/Discovery".format(self.Parameters["mqtt_topic"])
         LOGGER.info("prams updted")
         self.valid_configuration = True
 
@@ -158,17 +160,17 @@ class Controller(udi_interface.Node):
         if rc == 0:
             LOGGER.info("Poly MQTT Connected, subscribing...")
             self.mqttc.is_connected = True
-            result = self.mqttc.subscribe(self.mqtt_topic_cmd)
+            result = self.mqttc.subscribe(self.mqtt_topic_status)
             if result[0] == 0:
                 LOGGER.info(
                     "Subscribed to {} ".format("status")
             )
-            result = self.mqttc.subscribe("{}/cmd}".format(self.Parameters["mqtt_topic"]))
+            result = self.mqttc.subscribe(self.mqtt_topic_cmd)
             if result[0] == 0:
                 LOGGER.info(
                     "Subscribed to {} ".format("cmd")
             )
-            result = self.mqttc.subscribe("{}/Discovery}".format(self.Parameters["mqtt_topic"]))
+            result = self.mqttc.subscribe(self.mqtt_topic_Discovery)
             if result[0] == 0:
                 LOGGER.info(
                     "Subscribed to {} ".format("Discovery")
