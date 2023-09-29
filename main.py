@@ -45,6 +45,7 @@ class Controller(udi_interface.Node):
         self.INFO1 = None
         self.setup = 0
         self.mqtt_topic = None
+        self.mqtt_topic_cmd = None
         self.valid_configuration = False
 
         # subscribe to the events we want
@@ -90,6 +91,7 @@ class Controller(udi_interface.Node):
         self.mqtt_password = self.Parameters["mqtt_password"]
         # ***************************************    read in the topic from config
         self.mqtt_topic = self.Parameters["mqtt_topic"]
+        self.mqtt_topic_cmd = "tele/{}/INFO1".format(self.Parameters["mqtt_topic"])
         LOGGER.info("prams updted")
         self.valid_configuration = True
 
@@ -156,7 +158,7 @@ class Controller(udi_interface.Node):
         if rc == 0:
             LOGGER.info("Poly MQTT Connected, subscribing...")
             self.mqttc.is_connected = True
-            result = self.mqttc.subscribe("{}/status}".format(self.Parameters["mqtt_topic"]))
+            result = self.mqttc.subscribe(self.mqtt_topic_cmd)
             if result[0] == 0:
                 LOGGER.info(
                     "Subscribed to {} ".format("status")
