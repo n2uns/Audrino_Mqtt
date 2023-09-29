@@ -118,7 +118,7 @@ class Controller(udi_interface.Node):
             if self.Parameters['multiplier'] is not None:
                 mult = int(self.Parameters['multiplier'])
             else:
-                mult = 1
+                mult = 2
 
             node = self.poly.getNode('controller')
             if node is not None:
