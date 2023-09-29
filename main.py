@@ -175,6 +175,11 @@ class Controller(udi_interface.Node):
                 LOGGER.info(
                     "Subscribed to {} ".format("Discovery")
             )
+            result = self.mqttc.publish( self.mqtt_topic_Discovery, 1,)
+            if result[0] == 0:
+                LOGGER.info(
+                    "Subscribed to {} ".format("Discovery")
+            )
         else:
             LOGGER.error("Poly MQTT Connect failed")
     def on_message(self, client, userdata, message):
