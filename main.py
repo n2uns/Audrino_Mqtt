@@ -156,10 +156,20 @@ class Controller(udi_interface.Node):
         if rc == 0:
             LOGGER.info("Poly MQTT Connected, subscribing...")
             self.mqttc.is_connected = True
-            result = self.mqttc.subscribe(self.mqtt_topic)
+            result = self.mqttc.subscribe("{}/status}".format(self.Parameters["mqtt_topic"]))
             if result[0] == 0:
                 LOGGER.info(
                     "Subscribed to {} ".format("status")
+            )
+            result = self.mqttc.subscribe("{}/cmd}".format(self.Parameters["mqtt_topic"]))
+            if result[0] == 0:
+                LOGGER.info(
+                    "Subscribed to {} ".format("cmd")
+            )
+            result = self.mqttc.subscribe("{}/Discovery}".format(self.Parameters["mqtt_topic"]))
+            if result[0] == 0:
+                LOGGER.info(
+                    "Subscribed to {} ".format("Discovery")
             )
         else:
             LOGGER.error("Poly MQTT Connect failed")
