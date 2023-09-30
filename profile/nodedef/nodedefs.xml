@@ -11,16 +11,16 @@
     <cmds>
       <sends>
         <cmd id="AO1" >
-          <p id="" editor="AO" init="AO1" />
+          <p id="AO1" editor="AO" init="AO1" />
         </cmd>
         <cmd id="AO2" >
-          <p id="" editor="AO" init="AO2" />
+          <p id="AO2" editor="AO" init="AO2" />
         </cmd>
         <cmd id="AO3"  >
-          <p id="" editor="AO" init="AO3" />
+          <p id="AO3" editor="AO" init="AO3" />
         </cmd>
         <cmd id="AO4" >
-          <p id="" editor="AO" init="AO4" />
+          <p id="AO4" editor="AO" init="AO4" />
         </cmd>
       </sends>
       <accepts>
