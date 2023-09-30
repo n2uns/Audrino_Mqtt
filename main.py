@@ -163,30 +163,34 @@ class Controller(udi_interface.Node):
             result = self.mqttc.subscribe(self.mqtt_topic_status)
             if result[0] == 0:
                 LOGGER.info(
-                    "Subscribed to {} ".format("status")
+                    "Subscribed to {} ".format(self.mqtt_topic_status)
             )
             result = self.mqttc.subscribe(self.mqtt_topic_cmd)
             if result[0] == 0:
                 LOGGER.info(
-                    "Subscribed to {} ".format("cmd")
+                    "Subscribed to {} ".format(self.mqtt_topic_cmd)
             )
             result = self.mqttc.subscribe(self.mqtt_topic_Discovery)
             if result[0] == 0:
                 LOGGER.info(
-                    "Subscribed to {} ".format("Discovery")
+                    "Subscribed to {} ".format(self.mqtt_topic_Discovery)
             )
             result = self.mqttc.publish( self.mqtt_topic_Discovery, 1,)
             if result[0] == 0:
                 LOGGER.info(
-                    "Subscribed to {} ".format("Discovery")
+                    "Subscribed to {} ".format(self.mqtt_topic_Discovery)
             )
         else:
             LOGGER.error("Poly MQTT Connect failed")
     def on_message(self, client, userdata, message):
         LOGGER.info("Received message '" + str(message.payload) + "' on topic '"
             + message.topic + "' with QoS " + str(message.qos))
-
-
+    def discover(self, command=None):
+        result = self.mqttc.publish(self.mqtt_topic_Discovery, 1, )
+        if result[0] == 0:
+            LOGGER.info(
+                "Subscribed to {} ".format(self.mqtt_topic_Discovery)
+            )
 
 
 if __name__ == "__main__":
