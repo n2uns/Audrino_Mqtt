@@ -48,7 +48,7 @@ class Controller(udi_interface.Node):
         self.mqtt_topic_cmd = None
         self.valid_configuration = False
         self.valid_files = False
-
+        self.json_payload = None
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.POLL, self.poll)
