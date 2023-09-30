@@ -10,7 +10,9 @@
 	    </sts>
         <cmds>
             <sends >
-
+                <cmd id="GV0">
+                    <p id="" editor="AO" init="GV0" />
+                </cmd>
             </sends>
             <accepts>
                 <cmd id="GV0">
