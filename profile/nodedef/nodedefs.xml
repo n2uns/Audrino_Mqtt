@@ -15,13 +15,13 @@
         <cmd id="AO1" >
           <p id="" editor="AO" init="AO1" />
         </cmd>
-        <cmd id="AO2" editor="AI" >
+        <cmd id="AO2" >
           <p id="" editor="AO" init="AO2" />
         </cmd>
-        <cmd id="AO3" editor="AI" >
+        <cmd id="AO3"  >
           <p id="" editor="AO" init="AO3" />
         </cmd>
-        <cmd id="AO4" editor="AI" >
+        <cmd id="AO4" >
           <p id="" editor="AO" init="AO4" />
         </cmd>
         <cmd id="DISCOVER" />
