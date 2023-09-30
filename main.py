@@ -25,7 +25,7 @@ class Controller(udi_interface.Node):
     id = 'test'
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'GV0', 'value': 0, 'uom': 56},
+            {'driver': 'AO1', 'value': 0, 'uom': 56},
             {'driver': 'GV1', 'value': 0, 'uom': 56},
             ]
 
@@ -133,7 +133,7 @@ class Controller(udi_interface.Node):
             if node is not None:
                 self.count += 1
 
-                node.setDriver('GV0', self.count, True, True)
+                node.setDriver('AO1', self.count, True, True)
                 node.setDriver('GV1', (self.count * mult), True, True)
 
                 # be fancy and display a notice on the polyglot dashboard
