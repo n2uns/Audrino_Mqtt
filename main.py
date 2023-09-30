@@ -141,10 +141,18 @@ class Controller(udi_interface.Node):
     Just to show how commands are implemented. The commands here need to
     match what is in the nodedef profile file. 
     '''
+    def discover(self, command=None):
+        LOGGER.info(
+            "here here here i am *******************")
+        result = self.mqttc.publish(self.mqtt_topic_Discovery, 1, )
+        if result[0] == 0:
+            LOGGER.info(
+                "Subscribed to {} ".format(self.mqtt_topic_Discovery)
+            )
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-    commands = {'DISCOVER': noop}
+    commands = {'DISCOVER': discover}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
@@ -185,14 +193,6 @@ class Controller(udi_interface.Node):
     def on_message(self, client, userdata, message):
         LOGGER.info("Received message '" + str(message.payload) + "' on topic '"
             + message.topic + "' with QoS " + str(message.qos))
-    def discover(self, command=None):
-        LOGGER.info(
-            "here here here i am *******************")
-        result = self.mqttc.publish(self.mqtt_topic_Discovery, 1, )
-        if result[0] == 0:
-            LOGGER.info(
-                "Subscribed to {} ".format(self.mqtt_topic_Discovery)
-            )
 
 
 if __name__ == "__main__":
