@@ -10,8 +10,6 @@
 	</sts>
     <cmds>
       <sends>
-      </sends>
-      <accepts>
         <cmd id="AO1" >
           <p id="" editor="AO" init="AO1" />
         </cmd>
@@ -24,6 +22,8 @@
         <cmd id="AO4" >
           <p id="" editor="AO" init="AO4" />
         </cmd>
+      </sends>
+      <accepts>
         <cmd id="DISCOVER" />
       </accepts>
     </cmds>
