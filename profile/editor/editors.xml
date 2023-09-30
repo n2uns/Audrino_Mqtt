@@ -3,10 +3,10 @@
         <range uom="2" subset="ON,OFF" />
     </editor>
     <editor id="DI">
-        <range uom="78" subset="0,1" />
+        <range uom="78" subset="0,100" />
     </editor>
     <editor id="DO">
-        <range uom="78" subset="0,1" />
+        <range uom="78" subset="0,100" />
     </editor>
     <editor id="AI">
             <range uom="56" min="0" max="4095" prec="2" />
