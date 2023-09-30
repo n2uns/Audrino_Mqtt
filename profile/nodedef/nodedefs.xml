@@ -9,9 +9,7 @@
             <st id="GV1" editor="DO" />
 	    </sts>
         <cmds>
-            <sends>
-
-            </sends>
+            <sends />
             <accepts>
                 <cmd id="DISCOVER" />
             </accepts>
