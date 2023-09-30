@@ -201,8 +201,8 @@ class Controller(udi_interface.Node):
         f.write("ND-test-NAME = Example - MyDevice")
         f.write("ND-test-ICON = Output")
         f.write("ST-str-ST-NAME = NodeServer Online")
-        f.write("ST-str-GV0-NAME = raw data 0")
-        f.write("ST-str-GV1-NAME = raw data 1")
+        f.write("ST-str-GV0-NAME = battery 0")
+        f.write("ST-str-GV1-NAME = charger 1")
         f.write("CMD-str-DISCOVER-NAME = Re-Discover")
         f.close()
 if __name__ == "__main__":
