@@ -210,6 +210,7 @@ class Controller(udi_interface.Node):
         f.write("ST-str-GV1-NAME = charger 1")
         f.write("CMD-str-DISCOVER-NAME = Re-Discover")
         f.close()
+        self.valid_files = True
 if __name__ == "__main__":
     try:
         polyglot = udi_interface.Interface([])
