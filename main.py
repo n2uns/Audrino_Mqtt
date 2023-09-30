@@ -25,7 +25,7 @@ class Controller(udi_interface.Node):
     id = 'test'
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'AO1', 'value': 0, 'uom': 56},
+            {'driver': 'GV0', 'value': 0, 'uom': 56},
             {'driver': 'GV1', 'value': 0, 'uom': 56},
             ]
 
@@ -133,7 +133,7 @@ class Controller(udi_interface.Node):
             if node is not None:
                 self.count += 1
 
-                node.setDriver('AO1', self.count, True, True)
+                node.setDriver('GV0', self.count, True, True)
                 node.setDriver('GV1', (self.count * mult), True, True)
 
                 # be fancy and display a notice on the polyglot dashboard
@@ -212,7 +212,7 @@ class Controller(udi_interface.Node):
                 f.write("ND-test-NAME = Example - MyDevice\n")
                 f.write("ND-test-ICON = Output\n")
                 f.write("ST-str-ST-NAME = NodeServer Online\n")
-                f.write("ST-str-AO1-NAME = {}\n".format(self.json_payload["AI1"]))
+                f.write("ST-str-GV0-NAME = {}\n".format(self.json_payload["AI1"]))
 #                f.write("CMD-str-AO1-NAME = {}\n".format(self.json_payload["AI1"]))
                 f.write("ST-str-GV1-NAME = {}\n".format(self.json_payload["DO1"]))
                 f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
