@@ -2,39 +2,32 @@
    <nodeDef id="test" nodeType="139" nls="str">
     <sts>
       <st id="ST" editor="bool" />
-      <st id="AO1" editor="AI" />
-      <st id="AO2" editor="AI" />
-      <st id="AO3" editor="AI" />
-      <st id="AO4" editor="AI" />
-      <st id="AO5" editor="AI" />
-      <st id="AO6" editor="AI" />
-      <st id="AO7" editor="AI" />
-      <st id="AO8" editor="AI" />
+      <st id="AO1" editor="AO" />
+      <st id="AO2" editor="AO" />
+      <st id="AO3" editor="AO" />
+      <st id="AO4" editor="AO" />
+      <st id="AO5" editor="AO" />
+      <st id="AO6" editor="AO" />
+      <st id="AO7" editor="AO" />
+      <st id="AO8" editor="AO" />
      <st id="GV1" editor="DO" />
 	</sts>
     <cmds>
       <sends>
-      <cmd id="AO1" editor="AI" />
-      <cmd id="AO2" editor="AI" />
-      <cmd id="AO3" editor="AI" />
-      <cmd id="AO4" editor="AI" />
-      <cmd id="AO5" editor="AI" />
-      <cmd id="AO6" editor="AI" />
-      <cmd id="AO7" editor="AI" />
-      <cmd id="AO8" editor="AI" />
-      <cmd id="GV1" editor="DO" />
-
       </sends>
       <accepts>
-      <cmd id="AO1" editor="AI" />
-      <cmd id="AO2" editor="AI" />
-      <cmd id="AO3" editor="AI" />
-      <cmd id="AO4" editor="AI" />
-      <cmd id="AO5" editor="AI" />
-      <cmd id="AO6" editor="AI" />
-      <cmd id="AO7" editor="AI" />
-      <cmd id="AO8" editor="AI" />
-      <cmd id="GV1" editor="DO" />
+        <cmd id="AO1" >
+          <p id="" editor="AO" init="AO1" >
+        </cmd>
+        <cmd id="AO2" editor="AI" >
+          <p id="" editor="AO" init="AO2" >
+        </cmd>
+        <cmd id="AO3" editor="AI" >
+          <p id="" editor="AO" init="AO3" >
+        </cmd>
+        <cmd id="AO4" editor="AI" >
+          <p id="" editor="AO" init="AO4" >
+        </cmd>
         <cmd id="DISCOVER" />
       </accepts>
     </cmds>
