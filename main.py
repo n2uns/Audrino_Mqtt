@@ -212,8 +212,8 @@ class Controller(udi_interface.Node):
                 f.write("ND-test-NAME = Example - MyDevice\n")
                 f.write("ND-test-ICON = Output\n")
                 f.write("ST-str-ST-NAME = NodeServer Online\n")
-                f.write("ST-str-GV0-NAME = {}\n".format(self.json_payloar["AI1"]))
-                #f.write("ST-str-GV1-NAME = {}}\n".format(self.json_payload["DO1"]))
+                f.write("ST-str-GV0-NAME = {}\n".format(self.json_payload["AI1"]))
+                f.write("ST-str-GV1-NAME = {}}\n".format(self.json_payload["DO1"]))
                 f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
                 f.close()
                 self.valid_files = True
