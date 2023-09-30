@@ -200,11 +200,12 @@ class Controller(udi_interface.Node):
             + message.topic + "' with QoS " + str(message.qos))
         topic = message.topic
         payload = message.payload.decode("utf-8")
-        self.json_payload = json.JSONDecoder(payload)
+        self.json_payload = json.loads(payload)
         LOGGER.info("Received jason payload {} and topic {}".format(self.json_payload, topic))
 #    add build profile from discovery mesg **********************
         if topic == self.mqtt_topic_Discovery:
             LOGGER.info("made it past topic")
+            LOGGER.info(self.json_payload)
             if self.json_payload != "1":
                 LOGGER.info("made it past payload")
                 f = open("profile/nls/en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
