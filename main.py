@@ -203,12 +203,12 @@ class Controller(udi_interface.Node):
         json_payload = json.loads(payload)
         LOGGER.info("Received jason payload {} and topic {}".format(json_payload, topic))
         f = open("profile/nls/en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
-        f.write("ND-test-NAME = Example - MyDevice")
-        f.write("ND-test-ICON = Output")
-        f.write("ST-str-ST-NAME = NodeServer Online")
-        f.write("ST-str-GV0-NAME = battery 0")
-        f.write("ST-str-GV1-NAME = charger 1")
-        f.write("CMD-str-DISCOVER-NAME = Re-Discover")
+        f.write("ND-test-NAME = Example - MyDevice\n")
+        f.write("ND-test-ICON = Output\n")
+        f.write("ST-str-ST-NAME = NodeServer Online\n")
+        f.write("ST-str-GV0-NAME = battery 0\n")
+        f.write("ST-str-GV1-NAME = charger 1\n")
+        f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
         f.close()
         self.valid_files = True
 if __name__ == "__main__":
