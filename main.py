@@ -186,6 +186,8 @@ class Controller(udi_interface.Node):
         LOGGER.info("Received message '" + str(message.payload) + "' on topic '"
             + message.topic + "' with QoS " + str(message.qos))
     def discover(self, command=None):
+        LOGGER.info(
+            "here here here i am *******************")
         result = self.mqttc.publish(self.mqtt_topic_Discovery, 1, )
         if result[0] == 0:
             LOGGER.info(
