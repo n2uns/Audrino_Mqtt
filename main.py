@@ -47,6 +47,7 @@ class Controller(udi_interface.Node):
         self.mqtt_topic = None
         self.mqtt_topic_cmd = None
         self.valid_configuration = False
+        self.valid_files = False
 
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
@@ -56,7 +57,6 @@ class Controller(udi_interface.Node):
         # start processing events and create add our controller node
         polyglot.ready()
         # start mqtt
-        polyglot.updateProfile()
         while self.valid_configuration is False:
             LOGGER.info('Waiting on valid configuration')
             time.sleep(5)
@@ -72,6 +72,11 @@ class Controller(udi_interface.Node):
         self.mqttc.connect(self.mqtt_server, self.mqtt_port, 60)
         LOGGER.info("Start4")
         self.mqttc.loop_start()
+        while self.valid_files is False:
+            LOGGER.info('Waiting on valid configuration files to be made')
+            time.sleep(5)
+
+        polyglot.updateProfile()
         self.poly.addNode(self)
 
     '''
