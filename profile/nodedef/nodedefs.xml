@@ -10,7 +10,6 @@
 	</sts>
     <cmds>
       <sends>
-        <cmd id="AO1" editor="AO" init="AO1" />
       </sends>
       <accepts>
         <cmd id="DISCOVER" />
