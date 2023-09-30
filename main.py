@@ -200,7 +200,7 @@ class Controller(udi_interface.Node):
             + message.topic + "' with QoS " + str(message.qos))
         topic = message.topic
         payload = message.payload.decode("utf-8")
-        self.json_payload = json.loads(payload)
+        self.json_payload = json.JSONDecoder(payload)
         LOGGER.info("Received jason payload {} and topic {}".format(self.json_payload, topic))
 #    add build profile from discovery mesg **********************
         if topic == self.mqtt_topic_Discovery:
