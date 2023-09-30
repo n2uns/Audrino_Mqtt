@@ -193,7 +193,12 @@ class Controller(udi_interface.Node):
     def on_message(self, client, userdata, message):
         LOGGER.info("Received message '" + str(message.payload) + "' on topic '"
             + message.topic + "' with QoS " + str(message.qos))
-
+        topic = message.topic
+        payload = message.payload.decode("utf-8")
+        json_payload = json.loads(payload)
+        LOGGER.info("Received jason payload '" + json_payload + "' on topic '"
+            + topic)
+        # fan_speed = int(json_payload['FanSpeed'])
 
 if __name__ == "__main__":
     try:
