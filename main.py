@@ -200,17 +200,19 @@ class Controller(udi_interface.Node):
             + message.topic + "' with QoS " + str(message.qos))
         topic = message.topic
         payload = message.payload.decode("utf-8")
-        json_payload = json.loads(payload)
+        self.json_payload = json.loads(payload)
         LOGGER.info("Received jason payload {} and topic {}".format(json_payload, topic))
+#    add build profile from discovery mesg **********************
         f = open("profile/nls/en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
         f.write("ND-test-NAME = Example - MyDevice\n")
         f.write("ND-test-ICON = Output\n")
         f.write("ST-str-ST-NAME = NodeServer Online\n")
-        f.write("ST-str-GV0-NAME = battery 0\n")
-        f.write("ST-str-GV1-NAME = charger 1\n")
+        f.write("ST-str-GV0-NAME = {}\n".format(self.json_payloar["AI1"]))
+        f.write("ST-str-GV1-NAME = {}}\n".format(self.json_payload["DO1"]))
         f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
         f.close()
         self.valid_files = True
+
 if __name__ == "__main__":
     try:
         polyglot = udi_interface.Interface([])
