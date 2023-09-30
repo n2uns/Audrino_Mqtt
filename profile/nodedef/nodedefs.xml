@@ -6,10 +6,6 @@
       <st id="AO2" editor="AO" />
       <st id="AO3" editor="AO" />
       <st id="AO4" editor="AO" />
-      <st id="AO5" editor="AO" />
-      <st id="AO6" editor="AO" />
-      <st id="AO7" editor="AO" />
-      <st id="AO8" editor="AO" />
      <st id="GV1" editor="DO" />
 	</sts>
     <cmds>
@@ -17,16 +13,16 @@
       </sends>
       <accepts>
         <cmd id="AO1" >
-          <p id="" editor="AO" init="AO1" >
+          <p id="" editor="AO" init="AO1" />
         </cmd>
         <cmd id="AO2" editor="AI" >
-          <p id="" editor="AO" init="AO2" >
+          <p id="" editor="AO" init="AO2" />
         </cmd>
         <cmd id="AO3" editor="AI" >
-          <p id="" editor="AO" init="AO3" >
+          <p id="" editor="AO" init="AO3" />
         </cmd>
         <cmd id="AO4" editor="AI" >
-          <p id="" editor="AO" init="AO4" >
+          <p id="" editor="AO" init="AO4" />
         </cmd>
         <cmd id="DISCOVER" />
       </accepts>
