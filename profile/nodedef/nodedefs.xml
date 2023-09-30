@@ -2,10 +2,10 @@
    <nodeDef id="test" nodeType="139" nls="str">
     <sts>
       <st id="ST" editor="bool" />
-      <st id="AO1" editor="AO" />
-      <st id="AO2" editor="AO" />
-      <st id="AO3" editor="AO" />
-      <st id="AO4" editor="AO" />
+      <st id="AO1" editor="AI" />
+      <st id="AO2" editor="AI" />
+      <st id="AO3" editor="AI" />
+      <st id="AO4" editor="AI" />
      <st id="GV1" editor="DO" />
 	</sts>
     <cmds>
