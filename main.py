@@ -202,7 +202,7 @@ class Controller(udi_interface.Node):
         payload = message.payload.decode("utf-8")
         json_payload = json.loads(payload)
         LOGGER.info("Received jason payload {} and topic {}".format(json_payload, topic))
-        f = open("en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
+        f = open("profile/nls/en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
         f.write("ND-test-NAME = Example - MyDevice")
         f.write("ND-test-ICON = Output")
         f.write("ST-str-ST-NAME = NodeServer Online")
