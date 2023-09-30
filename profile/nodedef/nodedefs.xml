@@ -26,6 +26,15 @@
 
       </sends>
       <accepts>
+      <cmd id="AO1" editor="AI" />
+      <cmd id="AO2" editor="AI" />
+      <cmd id="AO3" editor="AI" />
+      <cmd id="AO4" editor="AI" />
+      <cmd id="AO5" editor="AI" />
+      <cmd id="AO6" editor="AI" />
+      <cmd id="AO7" editor="AI" />
+      <cmd id="AO8" editor="AI" />
+      <cmd id="GV1" editor="DO" />
         <cmd id="DISCOVER" />
       </accepts>
     </cmds>
