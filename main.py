@@ -206,7 +206,7 @@ class Controller(udi_interface.Node):
         if topic == self.mqtt_topic_Discovery:
             LOGGER.info("made it past topic")
             LOGGER.info(self.json_payload)
-            if self.json_payload != "1":
+            if self.json_payload != 1:
                 LOGGER.info("made it past payload")
                 f = open("profile/nls/en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
                 f.write("ND-test-NAME = Example - MyDevice\n")
