@@ -203,7 +203,7 @@ class Controller(udi_interface.Node):
         self.json_payload = json.loads(payload)
         LOGGER.info("Received jason payload {} and topic {}".format(self.json_payload, topic))
 #    add build profile from discovery mesg **********************
-        if topic == "Discover":
+        if topic == "Discovery":
             if self.json_payload != "1":
                 f = open("profile/nls/en_us.txt", "wt")        # fan_speed = int(json_payload['FanSpeed'])
                 f.write("ND-test-NAME = Example - MyDevice\n")
