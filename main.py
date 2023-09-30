@@ -196,8 +196,7 @@ class Controller(udi_interface.Node):
         topic = message.topic
         payload = message.payload.decode("utf-8")
         json_payload = json.loads(payload)
-        LOGGER.info("Received jason payload '" + json_payload + "' on topic '"
-            + topic)
+        LOGGER.info("Received jason payload {} and topic {}".format(json_payload, topic))
         # fan_speed = int(json_payload['FanSpeed'])
 
 if __name__ == "__main__":
