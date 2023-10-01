@@ -147,7 +147,7 @@ class Controller(udi_interface.Node):
     match what is in the nodedef profile file. 
     '''
     def discover(self, command=None):
-        LOGGER.info(
+        LOGGER.debug(
             "here here here i am *******************")
         result = self.mqttc.publish(self.mqtt_topic_Discovery, 1, )
         if result[0] == 0:
@@ -191,7 +191,7 @@ class Controller(udi_interface.Node):
             result = self.mqttc.publish( self.mqtt_topic_Discovery, 1,)
             if result[0] == 0:
                 LOGGER.info(
-                    "Subscribed to {} ".format(self.mqtt_topic_Discovery)
+                    "published to {} ".format(self.mqtt_topic_Discovery)
             )
         else:
             LOGGER.error("Poly MQTT Connect failed")
@@ -201,13 +201,13 @@ class Controller(udi_interface.Node):
         topic = message.topic
         payload = message.payload.decode("utf-8")
         self.json_payload = json.loads(payload)
-        LOGGER.info("Received jason payload {} and topic {}".format(self.json_payload, topic))
+        LOGGER.debug("Received jason payload {} and topic {}".format(self.json_payload, topic))
 #    add build profile from discovery mesg **********************
         if topic == self.mqtt_topic_Discovery:
-            LOGGER.info("made it past topic")
+            LOGGER.debug("made it past topic")
             LOGGER.info(self.json_payload)
             if self.json_payload != 1:
-                LOGGER.info("made it past payload")
+                LOGGER.debug("made it past payload")
                 f = open("profile/nls/en_us.txt", "wt")
                 f.write("ND-test-NAME = Example - MyDevice\n")
                 f.write("ND-test-ICON = Output\n")
