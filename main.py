@@ -335,8 +335,48 @@ class Controller(udi_interface.Node):
                 f.write('        	    </sts>\n')
                 f.write('        <cmds>\n')
                 f.write('            <sends >\n')
+                if "DO1" in self.json_payload :
+                    f.write('            <cmd id="GV5" />\n')
+                if "DO2" in self.json_payload :
+                    f.write('            <cmd id="GV6" />\n')
+                if "DO3" in self.json_payload :
+                    f.write('            <cmd id="GV7" />\n')
+                if "DO4" in self.json_payload :
+                    f.write('            <cmd id="GV8" />\n')
+                if "DO5" in self.json_payload :
+                    f.write('            <cmd id="GV9" />\n')
+                if "AO1" in self.json_payload :
+                    f.write('            <cmd id="GV16" />\n')
+                if "AO2" in self.json_payload :
+                    f.write('            <cmd id="GV17" />\n')
+                if "AO3" in self.json_payload :
+                    f.write('            <cmd id="GV18" />\n')
+                if "AO4" in self.json_payload :
+                    f.write('            <cmd id="GV19" />\n')
+                if "AO5" in self.json_payload :
+                    f.write('            <cmd id="GV20" />\n')
                 f.write('            </sends>\n')
                 f.write('            <accepts>\n')
+                if "DO1" in self.json_payload :
+                    f.write('            <cmd id="GV5" />\n')
+                if "DO2" in self.json_payload :
+                    f.write('            <cmd id="GV6" />\n')
+                if "DO3" in self.json_payload :
+                    f.write('            <cmd id="GV7" />\n')
+                if "DO4" in self.json_payload :
+                    f.write('            <cmd id="GV8" />\n')
+                if "DO5" in self.json_payload :
+                    f.write('            <cmd id="GV9" />\n')
+                if "AO1" in self.json_payload :
+                    f.write('            <cmd id="GV16" />\n')
+                if "AO2" in self.json_payload :
+                    f.write('            <cmd id="GV17" />\n')
+                if "AO3" in self.json_payload :
+                    f.write('            <cmd id="GV18" />\n')
+                if "AO4" in self.json_payload :
+                    f.write('            <cmd id="GV19" />\n')
+                if "AO5" in self.json_payload :
+                    f.write('            <cmd id="GV20" />\n')
                 f.write('                <cmd id="DISCOVER" />\n')
                 f.write('            </accepts>\n')
                 f.write('        </cmds>\n')
