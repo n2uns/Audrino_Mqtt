@@ -135,6 +135,7 @@ class Controller(udi_interface.Node):
 
                 node.setDriver('GV11', self.count, True, True)
                 node.setDriver('GV5', (self.count * mult), True, True)
+                node.setDriver('AO1', (self.count * mult), True, True)
 
                 # be fancy and display a notice on the polyglot dashboard
                 self.poly.Notices['count2'] = 'Current count is {}'.format(self.count)
