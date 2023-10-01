@@ -25,8 +25,8 @@ class Controller(udi_interface.Node):
     id = 'test'
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'GV0', 'value': 0, 'uom': 56},
-            {'driver': 'GV1', 'value': 0, 'uom': 56},
+            {'driver': 'GV11', 'value': 0, 'uom': 56},
+            {'driver': 'GV5', 'value': 0, 'uom': 56},
             ]
 
     def __init__(self, polyglot, parent, address, name):
@@ -133,8 +133,8 @@ class Controller(udi_interface.Node):
             if node is not None:
                 self.count += 1
 
-                node.setDriver('GV0', self.count, True, True)
-                node.setDriver('GV1', (self.count * mult), True, True)
+                node.setDriver('GV11', self.count, True, True)
+                node.setDriver('GV5', (self.count * mult), True, True)
 
                 # be fancy and display a notice on the polyglot dashboard
                 self.poly.Notices['count2'] = 'Current count is {}'.format(self.count)
@@ -213,8 +213,13 @@ class Controller(udi_interface.Node):
                 f.write("ND-test-NAME = Example - MyDevice\n")
                 f.write("ND-test-ICON = Output\n")
                 f.write("ST-str-ST-NAME = NodeServer Online\n")
-                f.write("ST-str-GV0-NAME = {}\n".format(self.json_payload["AI1"]))
-                f.write("ST-str-GV1-NAME = {}\n".format(self.json_payload["DO1"]))
+                if "AI1" in self.json_payload
+                    f.write("ST-str-GV11-NAME = {}\n".format(self.json_payload["AI1"]))
+                    LOGGER.debug("found AI1")
+                if "AI2" in self.json_payload
+                    f.write("ST-str-GV12-NAME = {}\n".format(self.json_payload["A21"]))
+                    LOGGER.debug("found AI2")
+                f.write("ST-str-GV5-NAME = {}\n".format(self.json_payload["DO1"]))
                 f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
                 f.close()
                 self.valid_files = True
