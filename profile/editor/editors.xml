@@ -1,7 +1,10 @@
 <editors>
     <editor id="bool">
-        <range uom="2" subset="ON,OFF" />
+        <range uom="2" subset="0,1" />
     </editor>
+	<editor id="raw">
+		<range uom="56" min="0" max="20000" prec="0" />
+	</editor>
     <editor id="DI">
         <range uom="78" subset="0,100" />
     </editor>
