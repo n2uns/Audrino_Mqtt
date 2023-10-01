@@ -25,8 +25,8 @@ class Controller(udi_interface.Node):
     id = 'test'
     drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'GV11', 'value': 0, 'uom': 56},
             {'driver': 'GV5', 'value': 0, 'uom': 56},
+            {'driver': 'GV11', 'value': 0, 'uom': 56},
             ]
 
     def __init__(self, polyglot, parent, address, name):
@@ -213,13 +213,66 @@ class Controller(udi_interface.Node):
                 f.write("ND-test-NAME = Example - MyDevice\n")
                 f.write("ND-test-ICON = Output\n")
                 f.write("ST-str-ST-NAME = NodeServer Online\n")
+                if "DI1" in self.json_payload :
+                    f.write("ST-str-GV0-NAME = {}\n".format(self.json_payload["DI1"]))
+                    LOGGER.debug("found DI1")
+                if "DI2" in self.json_payload :
+                    f.write("ST-str-GV1-NAME = {}\n".format(self.json_payload["DI2"]))
+                    LOGGER.debug("found DI2")
+                if "DI3" in self.json_payload :
+                    f.write("ST-str-GV2-NAME = {}\n".format(self.json_payload["DI3"]))
+                    LOGGER.debug("found DI3")
+                if "DI4" in self.json_payload :
+                    f.write("ST-str-GV3-NAME = {}\n".format(self.json_payload["DI4"]))
+                    LOGGER.debug("found DI4")
+                if "DI5" in self.json_payload :
+                    f.write("ST-str-GV4-NAME = {}\n".format(self.json_payload["DI5"]))
+                    LOGGER.debug("found AI1")
+                if "DO1" in self.json_payload :
+                    f.write("ST-str-GV5-NAME = {}\n".format(self.json_payload["DO1"]))
+                    LOGGER.debug("found DO1")
+                if "DO2" in self.json_payload :
+                    f.write("ST-str-GV6-NAME = {}\n".format(self.json_payload["DO2"]))
+                    LOGGER.debug("found DO2")
+                if "DO3" in self.json_payload :
+                    f.write("ST-str-GV7-NAME = {}\n".format(self.json_payload["DO3"]))
+                    LOGGER.debug("found DO3")
+                if "DO4" in self.json_payload :
+                    f.write("ST-str-GV8-NAME = {}\n".format(self.json_payload["DO4"]))
+                    LOGGER.debug("found DO4")
+                if "DO5" in self.json_payload :
+                    f.write("ST-str-GV9-NAME = {}\n".format(self.json_payload["DO5"]))
+                    LOGGER.debug("found AI1")
                 if "AI1" in self.json_payload :
                     f.write("ST-str-GV11-NAME = {}\n".format(self.json_payload["AI1"]))
                     LOGGER.debug("found AI1")
                 if "AI2" in self.json_payload :
-                    f.write("ST-str-GV12-NAME = {}\n".format(self.json_payload["A21"]))
+                    f.write("ST-str-GV12-NAME = {}\n".format(self.json_payload["AI2"]))
                     LOGGER.debug("found AI2")
-                f.write("ST-str-GV5-NAME = {}\n".format(self.json_payload["DO1"]))
+                if "AI3" in self.json_payload :
+                    f.write("ST-str-GV13-NAME = {}\n".format(self.json_payload["AI3"]))
+                    LOGGER.debug("found AI3")
+                if "AI4" in self.json_payload :
+                    f.write("ST-str-GV14-NAME = {}\n".format(self.json_payload["AI4"]))
+                    LOGGER.debug("found AI4")
+                if "AI5" in self.json_payload :
+                    f.write("ST-str-GV15-NAME = {}\n".format(self.json_payload["AI5"]))
+                    LOGGER.debug("found AI5")
+                if "AO1" in self.json_payload :
+                    f.write("ST-str-GV16-NAME = {}\n".format(self.json_payload["AO1"]))
+                    LOGGER.debug("found AO1")
+                if "AO2" in self.json_payload :
+                    f.write("ST-str-GV17-NAME = {}\n".format(self.json_payload["AO2"]))
+                    LOGGER.debug("found AO2")
+                if "AO3" in self.json_payload :
+                    f.write("ST-str-GV18-NAME = {}\n".format(self.json_payload["AO3"]))
+                    LOGGER.debug("found AO3")
+                if "AO4" in self.json_payload :
+                    f.write("ST-str-GV19-NAME = {}\n".format(self.json_payload["AO4"]))
+                    LOGGER.debug("found AO4")
+                if "AO5" in self.json_payload :
+                    f.write("ST-str-GV20-NAME = {}\n".format(self.json_payload["AO5"]))
+                    LOGGER.debug("found AO5")
                 f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
                 f.close()
                 self.valid_files = True
