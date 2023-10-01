@@ -230,18 +230,23 @@ class Controller(udi_interface.Node):
                     LOGGER.debug("found AI1")
                 if "DO1" in self.json_payload :
                     f.write("ST-str-GV5-NAME = {}\n".format(self.json_payload["DO1"]))
+                    f.write("CMD-str-GV5-NAME = {}\n".format(self.json_payload["DO1"]))
                     LOGGER.debug("found DO1")
                 if "DO2" in self.json_payload :
                     f.write("ST-str-GV6-NAME = {}\n".format(self.json_payload["DO2"]))
+                    f.write("CMD-str-GV6-NAME = {}\n".format(self.json_payload["DO1"]))
                     LOGGER.debug("found DO2")
                 if "DO3" in self.json_payload :
                     f.write("ST-str-GV7-NAME = {}\n".format(self.json_payload["DO3"]))
+                    f.write("CMD-str-GV7-NAME = {}\n".format(self.json_payload["DO1"]))
                     LOGGER.debug("found DO3")
                 if "DO4" in self.json_payload :
                     f.write("ST-str-GV8-NAME = {}\n".format(self.json_payload["DO4"]))
+                    f.write("CMD-str-GV8-NAME = {}\n".format(self.json_payload["DO1"]))
                     LOGGER.debug("found DO4")
                 if "DO5" in self.json_payload :
                     f.write("ST-str-GV9-NAME = {}\n".format(self.json_payload["DO5"]))
+                    f.write("CMD-str-GV9-NAME = {}\n".format(self.json_payload["DO1"]))
                     LOGGER.debug("found AI1")
                 if "AI1" in self.json_payload :
                     f.write("ST-str-GV11-NAME = {}\n".format(self.json_payload["AI1"]))
