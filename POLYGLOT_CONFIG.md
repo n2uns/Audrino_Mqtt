@@ -3,9 +3,9 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/exking/udi-mqtt-poly/blob/master/LICENSE)
 
-This Poly provides an interface between MQTT broker and [Polyglot v2](https://github.com/UniversalDevicesInc/polyglot-v2) server.
+This Poly provides an interface between MQTT broker and [Polyglot v3](https://github.com/UniversalDevicesInc/polyglot-v2) server.
 
-[This thread](https://forum.universal-devices.com/topic/24538-sonoff/?tab=comments#comment-244571) on UDI forums has more details, ask questions there.
+on UDI forums has more details, ask questions there.
 
 Note - your device MUST run the Arduino MQTT in order to work with MQTT!
 

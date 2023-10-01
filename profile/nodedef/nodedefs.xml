@@ -2,9 +2,6 @@
    <nodeDef id="test" nls="str">
         <sts>
             <st id="ST" editor="bool" />
-            <st id="AO1" editor="AO" />
-            <st id="AO2" editor="AO" />
-            <st id="AO3" editor="AO" />
             <st id="GV0" editor="AO" />
             <st id="GV1" editor="DO" />
 	    </sts>
