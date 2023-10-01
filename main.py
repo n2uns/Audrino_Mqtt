@@ -213,12 +213,12 @@ class Controller(udi_interface.Node):
                 f.write("ND-test-NAME = Example - MyDevice\n")
                 f.write("ND-test-ICON = Output\n")
                 f.write("ST-str-ST-NAME = NodeServer Online\n")
-                #if "AI1" in self.json_payload
-                f.write("ST-str-GV11-NAME = {}\n".format(self.json_payload["AI1"]))
-                #    LOGGER.debug("found AI1")
-                #if "AI2" in self.json_payload
-                #    f.write("ST-str-GV12-NAME = {}\n".format(self.json_payload["A21"]))
-                #    LOGGER.debug("found AI2")
+                if "AI1" in self.json_payload :
+                    f.write("ST-str-GV11-NAME = {}\n".format(self.json_payload["AI1"]))
+                    LOGGER.debug("found AI1")
+                if "AI2" in self.json_payload :
+                    f.write("ST-str-GV12-NAME = {}\n".format(self.json_payload["A21"]))
+                    LOGGER.debug("found AI2")
                 f.write("ST-str-GV5-NAME = {}\n".format(self.json_payload["DO1"]))
                 f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
                 f.close()
