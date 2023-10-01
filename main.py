@@ -305,6 +305,7 @@ class Controller(udi_interface.Node):
                 f.write('   </nodeDef>\n')
                 f.write(' </nodeDefs>\n')
                 f.close()
+                LOGGER.debug("made node def file")
                 self.valid_files = True
 
 if __name__ == "__main__":
