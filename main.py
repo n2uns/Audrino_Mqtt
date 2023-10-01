@@ -234,19 +234,19 @@ class Controller(udi_interface.Node):
                     LOGGER.debug("found DO1")
                 if "DO2" in self.json_payload :
                     f.write("ST-str-GV6-NAME = {}\n".format(self.json_payload["DO2"]))
-                    f.write("CMD-str-GV6-NAME = {}\n".format(self.json_payload["DO1"]))
+                    f.write("CMD-str-GV6-NAME = {}\n".format(self.json_payload["DO2"]))
                     LOGGER.debug("found DO2")
                 if "DO3" in self.json_payload :
                     f.write("ST-str-GV7-NAME = {}\n".format(self.json_payload["DO3"]))
-                    f.write("CMD-str-GV7-NAME = {}\n".format(self.json_payload["DO1"]))
+                    f.write("CMD-str-GV7-NAME = {}\n".format(self.json_payload["DO3"]))
                     LOGGER.debug("found DO3")
                 if "DO4" in self.json_payload :
                     f.write("ST-str-GV8-NAME = {}\n".format(self.json_payload["DO4"]))
-                    f.write("CMD-str-GV8-NAME = {}\n".format(self.json_payload["DO1"]))
+                    f.write("CMD-str-GV8-NAME = {}\n".format(self.json_payload["DO4"]))
                     LOGGER.debug("found DO4")
                 if "DO5" in self.json_payload :
                     f.write("ST-str-GV9-NAME = {}\n".format(self.json_payload["DO5"]))
-                    f.write("CMD-str-GV9-NAME = {}\n".format(self.json_payload["DO1"]))
+                    f.write("CMD-str-GV9-NAME = {}\n".format(self.json_payload["DO5"]))
                     LOGGER.debug("found AI1")
                 if "AI1" in self.json_payload :
                     f.write("ST-str-GV11-NAME = {}\n".format(self.json_payload["AI1"]))
@@ -265,20 +265,45 @@ class Controller(udi_interface.Node):
                     LOGGER.debug("found AI5")
                 if "AO1" in self.json_payload :
                     f.write("ST-str-GV16-NAME = {}\n".format(self.json_payload["AO1"]))
+                    f.write("CMD-str-GV16-NAME = {}\n".format(self.json_payload["AO1"]))
                     LOGGER.debug("found AO1")
                 if "AO2" in self.json_payload :
                     f.write("ST-str-GV17-NAME = {}\n".format(self.json_payload["AO2"]))
+                    f.write("CMD-str-GV17-NAME = {}\n".format(self.json_payload["AO2"]))
                     LOGGER.debug("found AO2")
                 if "AO3" in self.json_payload :
                     f.write("ST-str-GV18-NAME = {}\n".format(self.json_payload["AO3"]))
+                    f.write("CMD-str-GV18-NAME = {}\n".format(self.json_payload["AO3"]))
                     LOGGER.debug("found AO3")
                 if "AO4" in self.json_payload :
                     f.write("ST-str-GV19-NAME = {}\n".format(self.json_payload["AO4"]))
+                    f.write("CMD-str-GV19-NAME = {}\n".format(self.json_payload["AO4"]))
                     LOGGER.debug("found AO4")
                 if "AO5" in self.json_payload :
                     f.write("ST-str-GV20-NAME = {}\n".format(self.json_payload["AO5"]))
+                    f.write("CMD-str-GV20-NAME = {}\n".format(self.json_payload["AO5"]))
                     LOGGER.debug("found AO5")
                 f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
+                f.close()
+                LOGGER.debug("made en_us.tx file starting node def file")
+
+                f = open("profile/nodedef/nodedefs.xml", "wt")
+                f.write('<nodeDefs>\n')
+                f.write('   <nodeDef id="test" nls="str">\n')
+                f.write("        <sts>\n")
+                f.write('            <st id="ST" editor="bool" />\n')
+                f.write('            <st id="GV5" editor="DO" />\n')
+                f.write('            <st id="GV11" editor="AI" />\n')
+                f.write('        	    </sts>\n')
+                f.write('        <cmds>\n')
+                f.write('            <sends >\n')
+                f.write('            </sends>\n')
+                f.write('            <accepts>\n')
+                f.write('                <cmd id="DISCOVER" />\n')
+                f.write('            </accepts>\n')
+                f.write('        </cmds>\n')
+                f.write('   </nodeDef>\n')
+                f.write(' </nodeDefs>\n')
                 f.close()
                 self.valid_files = True
 
