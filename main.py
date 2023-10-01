@@ -292,8 +292,46 @@ class Controller(udi_interface.Node):
                 f.write('   <nodeDef id="test" nls="str">\n')
                 f.write("        <sts>\n")
                 f.write('            <st id="ST" editor="bool" />\n')
-                f.write('            <st id="GV5" editor="DO" />\n')
-                f.write('            <st id="GV11" editor="AI" />\n')
+                if "DI1" in self.json_payload :
+                    f.write('            <st id="GV0" editor="DI" />\n')
+                if "DI2" in self.json_payload :
+                    f.write('            <st id="GV1" editor="DI" />\n')
+                if "DI3" in self.json_payload :
+                    f.write('            <st id="GV2" editor="DI" />\n')
+                if "DI4" in self.json_payload :
+                    f.write('            <st id="GV3" editor="DI" />\n')
+                if "DI5" in self.json_payload :
+                    f.write('            <st id="GV4" editor="DI" />\n')
+                if "DO1" in self.json_payload :
+                    f.write('            <st id="GV5" editor="DO" />\n')
+                if "DO2" in self.json_payload :
+                    f.write('            <st id="GV6" editor="DO" />\n')
+                if "DO3" in self.json_payload :
+                    f.write('            <st id="GV7" editor="DO" />\n')
+                if "DO4" in self.json_payload :
+                    f.write('            <st id="GV8" editor="DO" />\n')
+                if "DO5" in self.json_payload :
+                    f.write('            <st id="GV9" editor="DO" />\n')
+                if "AI1" in self.json_payload :
+                    f.write('            <st id="GV11" editor="AI" />\n')
+                if "AI2" in self.json_payload :
+                    f.write('            <st id="GV12" editor="AI" />\n')
+                if "AI3" in self.json_payload :
+                    f.write('            <st id="GV13" editor="AI" />\n')
+                if "AI4" in self.json_payload :
+                    f.write('            <st id="GV14" editor="AI" />\n')
+                if "AI5" in self.json_payload :
+                    f.write('            <st id="GV15" editor="AI" />\n')
+                if "AO1" in self.json_payload :
+                    f.write('            <st id="GV16" editor="AO" />\n')
+                if "AO2" in self.json_payload :
+                    f.write('            <st id="GV17" editor="AO" />\n')
+                if "AO3" in self.json_payload :
+                    f.write('            <st id="GV18" editor="AO" />\n')
+                if "AO4" in self.json_payload :
+                    f.write('            <st id="GV19" editor="AO" />\n')
+                if "AO5" in self.json_payload :
+                    f.write('            <st id="GV20" editor="AO" />\n')
                 f.write('        	    </sts>\n')
                 f.write('        <cmds>\n')
                 f.write('            <sends >\n')
