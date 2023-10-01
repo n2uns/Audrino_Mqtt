@@ -9,9 +9,6 @@
             <sends >
             </sends>
             <accepts>
-                <cmd id="GV0">
-                    <p id="" editor="AO" init="GV0" />
-                </cmd>
                 <cmd id="DISCOVER" />
             </accepts>
         </cmds>
