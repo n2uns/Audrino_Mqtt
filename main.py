@@ -208,14 +208,15 @@ class Controller(udi_interface.Node):
             LOGGER.info(self.json_payload)
             if self.json_payload != 1:
                 LOGGER.debug("made it past payload")
-                f = open("profile/nls/en_us.txt", "wt")
-                f.write("ND-test-NAME = Example - MyDevice\n")
-                f.write("ND-test-ICON = Output\n")
-                f.write("ST-str-ST-NAME = NodeServer Online\n")
-                f.write("ST-str-GV0-NAME = {}\n".format(self.json_payload["AI1"]))
-                f.write("ST-str-GV1-NAME = {}\n".format(self.json_payload["DO1"]))
-                f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
-                f.close()
+
+#                f = open("profile/nls/en_us.txt", "wt")
+#                f.write("ND-test-NAME = Example - MyDevice\n")
+#                f.write("ND-test-ICON = Output\n")
+#                f.write("ST-str-ST-NAME = NodeServer Online\n")
+#                f.write("ST-str-GV0-NAME = {}\n".format(self.json_payload["AI1"]))
+#                f.write("ST-str-GV1-NAME = {}\n".format(self.json_payload["DO1"]))
+#                f.write("CMD-str-DISCOVER-NAME = Re-Discover\n")
+#                f.close()
                 self.valid_files = True
 
 if __name__ == "__main__":

@@ -1,0 +1,6 @@
+ND-test-NAME = Example - MyDevice
+ND-test-ICON = Output
+ST-str-ST-NAME = NodeServer Online
+ST-str-GV0-NAME = Battery Voltage
+ST-str-GV1-NAME = Batt Charger
+CMD-str-DISCOVER-NAME = Re-Discover
