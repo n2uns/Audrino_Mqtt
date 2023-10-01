@@ -62,15 +62,15 @@ class Controller(udi_interface.Node):
             time.sleep(5)
         self.mqttc = mqtt.Client()
         self.mqttc.on_connect = self.on_connect
-        LOGGER.info("Start2")
+        LOGGER.debug("Start2")
         self.on_disconnect = self.on_disconnect
         self.mqttc.on_message = self.on_message
         self.mqttc.is_connected = False
-        LOGGER.info("Start3")
+        LOGGER.debug("Start3")
 
         self.mqttc.username_pw_set(self.mqtt_user, self.mqtt_password)
         self.mqttc.connect(self.mqtt_server, self.mqtt_port, 60)
-        LOGGER.info("Start4")
+        LOGGER.debug("Start4")
         self.mqttc.loop_start()
         while self.valid_files is False:
             LOGGER.info('Waiting on valid configuration files to be made')
