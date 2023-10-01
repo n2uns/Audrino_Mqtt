@@ -146,6 +146,9 @@ class Controller(udi_interface.Node):
     Just to show how commands are implemented. The commands here need to
     match what is in the nodedef profile file. 
     '''
+
+    def AO1(self):
+        LOGGER.debug("anilog out up date")
     def discover(self, command=None):
         LOGGER.debug(
             "here here here i am *******************")
@@ -157,7 +160,7 @@ class Controller(udi_interface.Node):
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-    commands = {'DISCOVER': discover}
+    commands = {'DISCOVER': discover, 'AO1': AO1}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
