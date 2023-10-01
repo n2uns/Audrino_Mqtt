@@ -359,6 +359,7 @@ class Controller(udi_interface.Node):
                 f.write('            <accepts>\n')
                 if "DO1" in self.json_payload :
                     f.write('            <cmd id="GV5" />\n')
+                    f.write('               <p id="" editor="DO" init="GV5" />\n')
                 if "DO2" in self.json_payload :
                     f.write('            <cmd id="GV6" />\n')
                 if "DO3" in self.json_payload :
