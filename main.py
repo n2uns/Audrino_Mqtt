@@ -23,12 +23,7 @@ shortPoll interval.
 '''
 class Controller(udi_interface.Node):
     id = 'test'
-    drivers = [
-            {'driver': 'ST', 'value': 1, 'uom': 2},
-            {'driver': 'GV5', 'value': 0, 'uom': 56},
-            {'driver': 'GV11', 'value': 0, 'uom': 56},
-            {'driver': 'GV16', 'value': 0, 'uom': 56},
-            ]
+    drivers = None
 
     def __init__(self, polyglot, parent, address, name):
         super(Controller, self).__init__(polyglot, parent, address, name)
@@ -416,7 +411,7 @@ class Controller(udi_interface.Node):
                     f.write('               </cmd >\n')
                 if "AO4" in self.json_payload :
                     f.write('               <cmd id="GV19" >\n')
-                    f.write('                   <p id="" editor="AO" init="GV18" />\n')
+                    f.write('                   <p id="" editor="AO" init="GV19" />\n')
                     f.write('               </cmd >\n')
                 if "AO5" in self.json_payload :
                     f.write('               <cmd id="GV20" >\n')
@@ -428,6 +423,14 @@ class Controller(udi_interface.Node):
                 f.write('   </nodeDef>\n')
                 f.write('</nodeDefs>\n')
                 f.close()
+                global drivers
+                drivers = [
+                {'driver': 'ST', 'value': 1, 'uom': 2},
+                {'driver': 'GV5', 'value': 0, 'uom': 56},
+                {'driver': 'GV11', 'value': 0, 'uom': 56},
+                {'driver': 'GV16', 'value': 0, 'uom': 56},
+                ]
+
                 LOGGER.debug("made node def file")
                 self.valid_files = True
 
