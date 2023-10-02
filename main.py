@@ -433,7 +433,7 @@ class Controller(udi_interface.Node):
                 line2 = json.dumps( {'driver': 'GV5', 'value': 0, 'uom': 56} )
                 line3 = json.dumps({'driver': 'GV11', 'value': 0, 'uom': 56})
 #                line4 = " {'driver': 'GV16', 'value': 0, 'uom': 56}, ]"
-                drivers = line1 + line2 + line3
+                drivers = [line1 , line2 , line3]
                 Controller.updateDrivers(self, drivers)
                 LOGGER.debug(drivers)
 
