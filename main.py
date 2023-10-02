@@ -351,8 +351,9 @@ class Controller(udi_interface.Node):
                 if "DO5" in self.json_payload :
                     f.write('               <cmd id="GV9" />\n')
                 if "AO1" in self.json_payload :
-                    f.write('               <cmd id="GV16" />\n')
+                    f.write('               <cmd id="GV16" >\n')
                     f.write('                   <p id="" editor="AO" init="GV16" />\n')
+                    f.write('               </cmd >\n')
                 if "AO2" in self.json_payload :
                     f.write('               <cmd id="GV17" />\n')
                 if "AO3" in self.json_payload :
@@ -364,8 +365,9 @@ class Controller(udi_interface.Node):
                 f.write('           </sends>\n')
                 f.write('           <accepts>\n')
                 if "DO1" in self.json_payload :
-                    f.write('               <cmd id="GV5" />\n')
+                    f.write('               <cmd id="GV5" >\n')
                     f.write('                   <p id="" editor="DO" init="GV5" />\n')
+                    f.write('               </cmd >\n')
                 if "DO2" in self.json_payload :
                     f.write('               <cmd id="GV6" />\n')
                 if "DO3" in self.json_payload :
@@ -375,8 +377,9 @@ class Controller(udi_interface.Node):
                 if "DO5" in self.json_payload :
                     f.write('               <cmd id="GV9" />\n')
                 if "AO1" in self.json_payload :
-                    f.write('               <cmd id="GV16" />\n')
+                    f.write('               <cmd id="GV16" >\n')
                     f.write('                   <p id="" editor="AO" init="GV16" />\n')
+                    f.write('               </cmd >\n')
                 if "AO2" in self.json_payload :
                     f.write('               <cmd id="GV17" />\n')
                 if "AO3" in self.json_payload :
