@@ -428,12 +428,7 @@ class Controller(udi_interface.Node):
                 f.write('</nodeDefs>\n')
                 f.close()
                 global drivers
-                drivers = [
-                    {'driver': 'ST', 'value': 1, 'uom': 2},
-                    {'driver': 'GV5', 'value': 0, 'uom': 56},
-                    {'driver': 'GV11', 'value': 0, 'uom': 56},
-                    {'driver': 'GV16', 'value': 0, 'uom': 56},
-                ]
+                drivers = [{'driver': 'ST', 'value': 1, 'uom': 2}, {'driver': 'GV5', 'value': 0, 'uom': 56},{'driver': 'GV11', 'value': 0, 'uom': 56},{'driver': 'GV16', 'value': 0, 'uom': 56},]
 
                 LOGGER.debug("made node def file")
                 self.valid_files = True
