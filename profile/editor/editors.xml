@@ -3,7 +3,7 @@
         <range uom="2" subset="0,1" />
     </editor>
 	<editor id="raw">
-		<range uom="56" min="0" max="4095" prec="0" />
+		<range uom="56" min="0" max="4095" prec="2" />
 	</editor>
     <editor id="DI">
         <range uom="78" subset="0,100" />
@@ -12,9 +12,9 @@
         <range uom="78" subset="0,100" />
     </editor>
     <editor id="AI">
-            <range uom="56" min="0" max="4095" prec="2" />
+        <range uom="56" min="0" max="4095" prec="2" />
     </editor>
     <editor id="AO">
-            <range uom="56" min="0" max="4095" prec="2" />
+        <range uom="56" min="0" max="4095" prec="2" />
     </editor>
 </editors>
