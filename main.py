@@ -27,7 +27,7 @@ class Controller(udi_interface.Node):
             {'driver': 'ST', 'value': 1, 'uom': 2},
             {'driver': 'GV5', 'value': 0, 'uom': 56},
             {'driver': 'GV11', 'value': 0, 'uom': 56},
-            {'driver': 'AO1', 'value': 0, 'uom': 56},
+            {'driver': 'GV16', 'value': 0, 'uom': 56},
             ]
 
     def __init__(self, polyglot, parent, address, name):
@@ -136,7 +136,7 @@ class Controller(udi_interface.Node):
 
                 node.setDriver('GV11', self.count, True, True)
                 node.setDriver('GV5', (self.count * mult), True, True)
-                node.setDriver('AO1', (self.count * mult), True, True)
+                node.setDriver('GV16', (self.count * mult), True, True)
 
                 # be fancy and display a notice on the polyglot dashboard
                 self.poly.Notices['count2'] = 'Current count is {}'.format(self.count)
@@ -162,7 +162,7 @@ class Controller(udi_interface.Node):
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-    commands = {'DISCOVER': discover, 'AO1': AO1}
+    commands = {'DISCOVER': discover, 'GV16': AO1}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
@@ -269,8 +269,8 @@ class Controller(udi_interface.Node):
                     f.write("ST-str-GV15-NAME = {}\n".format(self.json_payload["AI5"]))
                     LOGGER.debug("found AI5")
                 if "AO1" in self.json_payload :
-                    f.write("ST-str-AO1-NAME = {}\n".format(self.json_payload["AO1"]))
-                    f.write("CMD-str-AO1-NAME = {}\n".format(self.json_payload["AO1"]))
+                    f.write("ST-str-GV16-NAME = {}\n".format(self.json_payload["AO1"]))
+                    f.write("CMD-str-GV16-NAME = {}\n".format(self.json_payload["AO1"]))
                     LOGGER.debug("found AO1")
                 if "AO2" in self.json_payload :
                     f.write("ST-str-GV17-NAME = {}\n".format(self.json_payload["AO2"]))
@@ -328,7 +328,7 @@ class Controller(udi_interface.Node):
                 if "AI5" in self.json_payload :
                     f.write('            <st id="GV15" editor="AI" />\n')
                 if "AO1" in self.json_payload :
-                    f.write('            <st id="AO1" editor="AO" />\n')
+                    f.write('            <st id="GV16" editor="AO" />\n')
                 if "AO2" in self.json_payload :
                     f.write('            <st id="GV17" editor="AO" />\n')
                 if "AO3" in self.json_payload :
@@ -374,8 +374,8 @@ class Controller(udi_interface.Node):
                 if "DO5" in self.json_payload :
                     f.write('            <cmd id="GV9" />\n')
                 if "AO1" in self.json_payload :
-                    f.write('            <cmd id="AO1" />\n')
-                    f.write('               <p id="AO1" editor="AO" init="AO1" />\n')
+                    f.write('            <cmd id="GV16" />\n')
+                    f.write('               <p id="GV16" editor="AO" init="GV16" />\n')
                 if "AO2" in self.json_payload :
                     f.write('            <cmd id="GV17" />\n')
                 if "AO3" in self.json_payload :
