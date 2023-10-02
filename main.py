@@ -49,8 +49,15 @@ class Controller(udi_interface.Node):
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.POLL, self.poll)
         polyglot.subscribe(polyglot.START, self.start, address)
+    drivers = [
+            {'driver': 'ST', 'value': 1, 'uom': 2},
+            {'driver': 'GV5', 'value': 0, 'uom': 56},
+            {'driver': 'GV11', 'value': 0, 'uom': 56},
+            {'driver': 'GV16', 'value': 0, 'uom': 56},
+    ]
 
         # start processing events and create add our controller node
+        polyglot.ready()
         # start mqtt
         while self.valid_configuration is False:
             LOGGER.info('Waiting on valid configuration')
@@ -70,7 +77,6 @@ class Controller(udi_interface.Node):
         while self.valid_files is False:
             LOGGER.info('Waiting on valid configuration files to be made')
             time.sleep(5)
-        polyglot.ready()
 
         polyglot.updateProfile()
         self.poly.addNode(self)
@@ -423,13 +429,6 @@ class Controller(udi_interface.Node):
                 f.write('   </nodeDef>\n')
                 f.write('</nodeDefs>\n')
                 f.close()
-                global drivers
-                drivers = [
-                {'driver': 'ST', 'value': 1, 'uom': 2},
-                {'driver': 'GV5', 'value': 0, 'uom': 56},
-                {'driver': 'GV11', 'value': 0, 'uom': 56},
-                {'driver': 'GV16', 'value': 0, 'uom': 56},
-                ]
 
                 LOGGER.debug("made node def file")
                 self.valid_files = True
