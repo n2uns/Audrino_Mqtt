@@ -49,12 +49,13 @@ class Controller(udi_interface.Node):
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.POLL, self.poll)
         polyglot.subscribe(polyglot.START, self.start, address)
-    drivers = [
+        global drivers
+        drivers = [
             {'driver': 'ST', 'value': 1, 'uom': 2},
             {'driver': 'GV5', 'value': 0, 'uom': 56},
             {'driver': 'GV11', 'value': 0, 'uom': 56},
             {'driver': 'GV16', 'value': 0, 'uom': 56},
-    ]
+        ]
 
         # start processing events and create add our controller node
         polyglot.ready()
