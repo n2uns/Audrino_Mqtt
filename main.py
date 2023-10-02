@@ -26,8 +26,6 @@ class Controller(udi_interface.Node):
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2},
         {'driver': 'GV5', 'value': 0, 'uom': 56},
-        {'driver': 'GV11', 'value': 0, 'uom': 56},
-        {'driver': 'GV16', 'value': 0, 'uom': 56},
         ]
 
     def __init__(self, polyglot, parent, address, name):
