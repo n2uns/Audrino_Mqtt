@@ -428,10 +428,10 @@ class Controller(udi_interface.Node):
                 f.write('</nodeDefs>\n')
                 f.close()
                 global drivers
-                line1 = "[{'driver': 'ST', 'value': 1, 'uom': 2},"
+                line1 = "[ {'driver': 'ST', 'value': 1, 'uom': 2},"
                 line2 = " {'driver': 'GV5', 'value': 0, 'uom': 56},"
                 line3 = " {'driver': 'GV11', 'value': 0, 'uom': 56},"
-                line4 = "{'driver': 'GV16', 'value': 0, 'uom': 56} ]"
+                line4 = " {'driver': 'GV16', 'value': 0, 'uom': 56}, ]"
                 drivers = line1 + line2 + line3 + line4
 
                 LOGGER.debug("made node def file")
