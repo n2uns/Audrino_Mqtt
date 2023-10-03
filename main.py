@@ -453,7 +453,7 @@ class Controller(udi_interface.Node):
 #                line4 = " {'driver': 'GV16', 'value': 0, 'uom': 56}, ]"
 #                drivers = [line1 , line2 , line3]
 #                Controller.updateDrivers(self, drivers)
-                LOGGER.debug(drivers)
+ #               LOGGER.debug(drivers)
 
                 LOGGER.debug("made node def file")
                 self.valid_files = True
