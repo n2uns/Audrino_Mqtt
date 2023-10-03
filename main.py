@@ -150,6 +150,7 @@ class Controller(udi_interface.Node):
 
     def mycommand(self, mydat =None):
         LOGGER.debug("anilog out up date")
+        ##    ***************************************** need to add prosses commands all 10 outputs
     def discover(self, command=None):
         LOGGER.debug(
             "here here here i am *******************")
