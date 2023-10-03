@@ -148,7 +148,7 @@ class Controller(udi_interface.Node):
     match what is in the nodedef profile file. 
     '''
 
-    def AO1(self):
+    def mycommand(self, mydat =None):
         LOGGER.debug("anilog out up date")
     def discover(self, command=None):
         LOGGER.debug(
@@ -161,7 +161,7 @@ class Controller(udi_interface.Node):
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-    commands = {'DISCOVER': discover, 'GV16': AO1}
+    commands = {'DISCOVER': discover, 'GV5': mycommand, 'GV6': mycommand, 'GV7': mycommand, 'GV8': mycommand, 'GV9': mycommand, 'GV16': mycommand, 'GV17': mycommand, 'GV18': mycommand, 'GV19': mycommand, 'GV20': mycommand}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
