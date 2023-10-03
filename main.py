@@ -435,7 +435,7 @@ class Controller(udi_interface.Node):
                 LOGGER.debug("made node def file")
                 self.valid_files = True
 
-# make sure node is fully up and running before we allow the status to execute ***************************************************************************
+# make sure node is fully up and running before we allow the status to execute ************************************************************************
         if topic == self.mqtt_topic_status:
             while self.valid_files is False:
                 LOGGER.info('Waiting on valid configuration files to be made')
