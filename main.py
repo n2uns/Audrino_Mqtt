@@ -140,23 +140,7 @@ class Controller(udi_interface.Node):
     def poll(self, polltype):
 
         if 'shortPoll' in polltype:
-            if self.Parameters['multiplier'] is not None:
-                mult = int(self.Parameters['multiplier'])
-            else:
-                mult = 2
-
-            node = self.poly.getNode('controller')
-            if node is not None:
-                self.count += 1
-
-                node.setDriver('GV11', self.count, True, True)
-                node.setDriver('GV5', (self.count * mult), True, True)
-                node.setDriver('GV16', (self.count * mult), True, True)
-
-                # be fancy and display a notice on the polyglot dashboard
-                self.poly.Notices['count2'] = 'Current count is {}'.format(self.count)
-            else:
-                LOGGER.error('Failed to find "controller" node')
+                LOGGER.debug('short poll')
 
 
     '''
@@ -223,6 +207,70 @@ class Controller(udi_interface.Node):
         self.json_payload = json.loads(payload)
         LOGGER.debug("Received jason payload {} and topic {}".format(self.json_payload, topic))
 #    add build profile from discovery mesg **********************
+        if topic == self.mqtt_topic_status:
+            node = self.poly.getNode('controller')
+            LOGGER.debug("updating status")
+            if "DI1" in self.json_payload:
+                node.setDriver('GV0', (self.json_payload["DI1"]), True, True)
+                LOGGER.debug("found DI1")
+            if "DI2" in self.json_payload:
+                node.setDriver('GV1', (self.json_payload["DI2"]), True, True)
+                LOGGER.debug("found DI2")
+            if "DI3" in self.json_payload:
+                node.setDriver('GV2', (self.json_payload["DI3"]), True, True)
+                LOGGER.debug("found DI3")
+            if "DI4" in self.json_payload:
+                node.setDriver('GV3', (self.json_payload["DI4"]), True, True)
+                LOGGER.debug("found DI4")
+            if "DI5" in self.json_payload:
+                node.setDriver('GV4', (self.json_payload["DI5"]), True, True)
+                LOGGER.debug("found AI1")
+            if "DO1" in self.json_payload :
+                node.setDriver('GV5', (self.json_payload["DO1"]), True, True)
+                LOGGER.debug("found DO1")
+            if "DO2" in self.json_payload :
+                node.setDriver('GV6', (self.json_payload["DO1"]), True, True)
+                LOGGER.debug("found DO2")
+            if "DO3" in self.json_payload :
+                node.setDriver('GV7', (self.json_payload["DO3"]), True, True)
+                LOGGER.debug("found DO3")
+            if "DO4" in self.json_payload :
+                node.setDriver('GV8', (self.json_payload["DO4"]), True, True)
+                LOGGER.debug("found DO4")
+            if "DO5" in self.json_payload :
+                node.setDriver('GV9', (self.json_payload["DO5"]), True, True)
+                LOGGER.debug("found AI1")
+            if "AI1" in self.json_payload :
+                node.setDriver('GV11', (self.json_payload["AI1"]), True, True)
+                LOGGER.debug("found AI1")
+            if "AI2" in self.json_payload :
+                node.setDriver('GV12', (self.json_payload["AI2"]), True, True)
+                LOGGER.debug("found AI2")
+            if "AI3" in self.json_payload :
+                node.setDriver('GV13', (self.json_payload["AI3"]), True, True)
+                LOGGER.debug("found AI3")
+            if "AI4" in self.json_payload :
+                node.setDriver('GV14', (self.json_payload["AI4"]), True, True)
+                LOGGER.debug("found AI4")
+            if "AI5" in self.json_payload :
+                node.setDriver('GV15', (self.json_payload["AI5"]), True, True)
+                LOGGER.debug("found AI5")
+            if "AO1" in self.json_payload :
+                node.setDriver('GV16', (self.json_payload["AO1"]), True, True)
+                LOGGER.debug("found AO1")
+            if "AO2" in self.json_payload :
+                node.setDriver('GV17', (self.json_payload["AO2"]), True, True)
+                LOGGER.debug("found AO2")
+            if "AO3" in self.json_payload :
+                node.setDriver('GV18', (self.json_payload["AO3"]), True, True)
+                LOGGER.debug("found AO3")
+            if "AO4" in self.json_payload :
+                node.setDriver('GV19', (self.json_payload["AO4"]), True, True)
+                LOGGER.debug("found AO4")
+            if "AO5" in self.json_payload :
+                node.setDriver('GV20', (self.json_payload["AO5"]), True, True)
+                LOGGER.debug("found AO5")
+
         if topic == self.mqtt_topic_Discovery:
             LOGGER.debug("made it past topic")
             LOGGER.info(self.json_payload)
