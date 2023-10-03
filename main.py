@@ -89,13 +89,11 @@ class Controller(udi_interface.Node):
         self.mqttc.connect(self.mqtt_server, self.mqtt_port, 60)
         LOGGER.debug("Start4")
         self.mqttc.loop_start()
-        while self.valid_files is False:
-            LOGGER.info('Waiting on valid configuration files to be made')
-            time.sleep(5)
+#        while self.valid_files is False:
+#            LOGGER.info('Waiting on valid configuration files to be made')
+#            time.sleep(5)
 #        global drivers
 #        Controller.updateDrivers(self,drivers)
-        polyglot.updateProfile()
-        self.poly.addNode(self)
 
     '''
     Read the user entered custom parameters. In this case, it is just
@@ -445,18 +443,13 @@ class Controller(udi_interface.Node):
                 f.write('   </nodeDef>\n')
                 f.write('</nodeDefs>\n')
                 f.close()
-#                global drivers
 
-#                line1 = json.dumps({'driver': 'ST', 'value': 1, 'uom': 2})
-#                line2 = json.dumps( {'driver': 'GV5', 'value': 0, 'uom': 56} )
-#                line3 = json.dumps({'driver': 'GV11', 'value': 0, 'uom': 56})
-#                line4 = " {'driver': 'GV16', 'value': 0, 'uom': 56}, ]"
-#                drivers = [line1 , line2 , line3]
-#                Controller.updateDrivers(self, drivers)
- #               LOGGER.debug(drivers)
+
+                polyglot.updateProfile()
+                self.poly.addNode(self)
 
                 LOGGER.debug("made node def file")
-                self.valid_files = True
+#                self.valid_files = True
 
 if __name__ == "__main__":
     try:
