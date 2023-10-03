@@ -25,7 +25,25 @@ class Controller(udi_interface.Node):
     id = 'test'
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2},
-        {'driver': 'GV5', 'value': 0, 'uom': 56},
+        {'driver': 'GV1', 'value': 0, 'uom': 78},
+        {'driver': 'GV2', 'value': 0, 'uom': 78},
+        {'driver': 'GV3', 'value': 0, 'uom': 78},
+        {'driver': 'GV4', 'value': 0, 'uom': 78},
+        {'driver': 'GV5', 'value': 0, 'uom': 78},
+        {'driver': 'GV6', 'value': 0, 'uom': 78},
+        {'driver': 'GV7', 'value': 0, 'uom': 78},
+        {'driver': 'GV8', 'value': 0, 'uom': 78},
+        {'driver': 'GV0', 'value': 0, 'uom': 78},
+        {'driver': 'GV9', 'value': 0, 'uom': 78},
+        {'driver': 'GV11', 'value': 0, 'uom': 56},
+        {'driver': 'GV12', 'value': 0, 'uom': 56},
+        {'driver': 'GV13', 'value': 0, 'uom': 56},
+        {'driver': 'GV14', 'value': 0, 'uom': 56},
+        {'driver': 'GV15', 'value': 0, 'uom': 56},
+        {'driver': 'GV16', 'value': 0, 'uom': 56},
+        {'driver': 'GV17', 'value': 0, 'uom': 56},
+        {'driver': 'GV18', 'value': 0, 'uom': 56},
+        {'driver': 'GV19', 'value': 0, 'uom': 56},
         ]
 
     def __init__(self, polyglot, parent, address, name):
@@ -427,14 +445,14 @@ class Controller(udi_interface.Node):
                 f.write('   </nodeDef>\n')
                 f.write('</nodeDefs>\n')
                 f.close()
-                global drivers
+#                global drivers
 
-                line1 = json.dumps({'driver': 'ST', 'value': 1, 'uom': 2})
-                line2 = json.dumps( {'driver': 'GV5', 'value': 0, 'uom': 56} )
-                line3 = json.dumps({'driver': 'GV11', 'value': 0, 'uom': 56})
+#                line1 = json.dumps({'driver': 'ST', 'value': 1, 'uom': 2})
+#                line2 = json.dumps( {'driver': 'GV5', 'value': 0, 'uom': 56} )
+#                line3 = json.dumps({'driver': 'GV11', 'value': 0, 'uom': 56})
 #                line4 = " {'driver': 'GV16', 'value': 0, 'uom': 56}, ]"
-                drivers = [line1 , line2 , line3]
-                Controller.updateDrivers(self, drivers)
+#                drivers = [line1 , line2 , line3]
+#                Controller.updateDrivers(self, drivers)
                 LOGGER.debug(drivers)
 
                 LOGGER.debug("made node def file")
