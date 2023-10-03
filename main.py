@@ -161,7 +161,7 @@ class Controller(udi_interface.Node):
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-#    commands = {'DISCOVER': discover, 'GV5': mycommand, 'GV6': mycommand, 'GV7': mycommand, 'GV8': mycommand, 'GV9': mycommand, 'GV16': mycommand, 'GV17': mycommand, 'GV18': mycommand, 'GV19': mycommand, 'GV20': mycommand}
+    commands = {'DISCOVER': discover, 'GV5': mycommand, 'GV6': mycommand, 'GV7': mycommand, 'GV8': mycommand, 'GV9': mycommand, 'GV16': mycommand, 'GV17': mycommand, 'GV18': mycommand, 'GV19': mycommand, 'GV20': mycommand}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
