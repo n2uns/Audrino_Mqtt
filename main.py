@@ -431,6 +431,7 @@ class Controller(udi_interface.Node):
 
                 polyglot.updateProfile()
                 self.poly.addNode(self)
+                self.valid_files = True
         #        while self.valid_files is False:
         #            LOGGER.info('Waiting on valid configuration files to be made')
         #            time.sleep(5)
