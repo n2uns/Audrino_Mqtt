@@ -433,8 +433,13 @@ class Controller(udi_interface.Node):
                 self.poly.addNode(self)
 
                 LOGGER.debug("made node def file")
-#                self.valid_files = True
+                self.valid_files = True
+
+# make sure node is fully up and running before we allow the status to execute ***************************************************************************
         if topic == self.mqtt_topic_status:
+            while self.valid_files is False:
+                LOGGER.info('Waiting on valid configuration files to be made')
+                time.sleep(5)
             node = self.poly.getNode('controller')
             LOGGER.debug("updating status")
             if "DI1" in self.json_payload:
