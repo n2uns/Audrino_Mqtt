@@ -148,8 +148,8 @@ class Controller(udi_interface.Node):
     match what is in the nodedef profile file. 
     '''
 
-    def mycommand(self, mydat =None):
-        LOGGER.debug("anilog out up date")
+    def mycommand(self, mydat):
+        LOGGER.debug("anilog out up date mydat = {}").format(mydat)
         ##    ***************************************** need to add prosses commands all 10 outputs
     def discover(self, command=None):
         LOGGER.debug(
