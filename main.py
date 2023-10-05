@@ -162,7 +162,7 @@ class Controller(udi_interface.Node):
  #       result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
  #       if result[0] == 0:
         LOGGER.info(
-        "pushed to {} data = {}".format(self.mqtt_topic_cmd, self.drivers)
+        "pushed to {} data = {}".format(self.mqtt_topic_cmd, self.drivers.__getitem(self,"GV11"))
         )
         ##    ***************************************** need to add prosses commands all 10 outputs
     def discover(self, command=None):
