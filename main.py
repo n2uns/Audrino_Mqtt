@@ -150,31 +150,132 @@ class Controller(udi_interface.Node):
     '''
 
     def commandAO1(self, none):
-        LOGGER.debug("anilog out up date mydat")
-        result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
-        if result[0] == 0:
-            LOGGER.info(
-                "pushed to {} data = {}".format(self.mqtt_topic_cmd, self.drivers)
-            )
-
-    def mycommand(self, none):
-
-        LOGGER.debug("anilog out up date mydat")
         mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV11")
-        mypayload = '("AO1": "{}" )'.format(mymessage)
-
-
+        mymessage = mynode.getDriver("GV16")
         data = {}
         data['AO1'] = mymessage
         json_data = json.dumps(data)
-#        myjson_payload = mypayload
         result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
-        LOGGER.info(
-            "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
-        )
         if result[0] == 0:
-            LOGGER.info(
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def commandAO2(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV17")
+        data = {}
+        data['AO2'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def commandAO3(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV18")
+        data = {}
+        data['AO3'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def commandAO4(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV19")
+        data = {}
+        data['AO4'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def commandAO5(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV20")
+        data = {}
+        data['AO5'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def commandDO1(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV5")
+        data = {}
+        data['DO1'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def commandDO2(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV6")
+        data = {}
+        data['DO2'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+    def commandDO3(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV7")
+        data = {}
+        data['DO3'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+    def commandDO4(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV8")
+        data = {}
+        data['DO4'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+    def commandDO5(self, none):
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV9")
+        data = {}
+        data['DO5'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
+            )
+
+    def mycommand(self, none):
+        LOGGER.debug("anilog out up date mydat")
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV16")
+        data = {}
+        data['AO1'] = mymessage
+        json_data = json.dumps(data)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
+        if result[0] == 0:
+            LOGGER.debug(
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
@@ -190,7 +291,7 @@ class Controller(udi_interface.Node):
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-    commands = {'DISCOVER': discover, 'GV5': commandAO1, 'GV6': mycommand, 'GV7': mycommand, 'GV8': mycommand, 'GV9': mycommand, 'GV16': mycommand, 'GV17': mycommand, 'GV18': mycommand, 'GV19': mycommand, 'GV20': mycommand}
+    commands = {'DISCOVER': discover, 'GV5': commandDO1, 'GV6': commandDO2, 'GV7': commandDO3, 'GV8': commandDO4, 'GV9': commandDO5, 'GV16': commandAO1, 'GV17': commandAO2, 'GV18': commandAO3, 'GV19': commandAO4, 'GV20': commandAO5}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
