@@ -617,7 +617,7 @@ if __name__ == "__main__":
         polyglot = udi_interface.Interface([])
         polyglot.start("1.0.1")
 
-        # Create the controller node
+        # Create the controller node here
         Controller(polyglot, 'controller', 'controller', 'Arduino MQTT')
 
         # Just sit and wait for events
