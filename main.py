@@ -161,9 +161,8 @@ class Controller(udi_interface.Node):
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
-    def commandAO2(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV17")
+    def commandAO2(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['AO2'] = mymessage
         json_data = json.dumps(data)
@@ -173,9 +172,8 @@ class Controller(udi_interface.Node):
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
-    def commandAO3(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV18")
+    def commandAO3(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['AO3'] = mymessage
         json_data = json.dumps(data)
@@ -186,8 +184,7 @@ class Controller(udi_interface.Node):
             )
 
     def commandAO4(self, command):
-        mynode = self.poly.getNode('controller')
-        mymessage = int(command.get("value")) #mynode.getDriver("GV19")
+        mymessage = int(command.get("value"))
         data = {}
         data['AO4'] = mymessage
         json_data = json.dumps(data)
@@ -197,9 +194,8 @@ class Controller(udi_interface.Node):
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
-    def commandAO5(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV20")
+    def commandAO5(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['AO5'] = mymessage
         json_data = json.dumps(data)
@@ -209,9 +205,8 @@ class Controller(udi_interface.Node):
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
-    def commandDO1(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV5")
+    def commandDO1(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['DO1'] = mymessage
         json_data = json.dumps(data)
@@ -221,9 +216,8 @@ class Controller(udi_interface.Node):
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
-    def commandDO2(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV6")
+    def commandDO2(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['DO2'] = mymessage
         json_data = json.dumps(data)
@@ -232,9 +226,8 @@ class Controller(udi_interface.Node):
             LOGGER.debug(
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
-    def commandDO3(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV7")
+    def commandDO3(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['DO3'] = mymessage
         json_data = json.dumps(data)
@@ -243,9 +236,8 @@ class Controller(udi_interface.Node):
             LOGGER.debug(
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
-    def commandDO4(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV8")
+    def commandDO4(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['DO4'] = mymessage
         json_data = json.dumps(data)
@@ -254,24 +246,10 @@ class Controller(udi_interface.Node):
             LOGGER.debug(
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
-    def commandDO5(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV9")
+    def commandDO5(self, command):
+        mymessage = int(command.get("value"))
         data = {}
         data['DO5'] = mymessage
-        json_data = json.dumps(data)
-        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
-        if result[0] == 0:
-            LOGGER.debug(
-                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
-            )
-
-    def mycommand(self, none):
-        LOGGER.debug("anilog out up date mydat")
-        mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV16")
-        data = {}
-        data['AO1'] = mymessage
         json_data = json.dumps(data)
         result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
         if result[0] == 0:
