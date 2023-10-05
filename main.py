@@ -74,7 +74,7 @@ class Controller(udi_interface.Node):
 
         # start processing events and create add our controller node
         polyglot.start("1.0.1")
-        polyglot.ready()
+#        polyglot.ready()
         # start mqtt
         while self.valid_configuration is False:
             LOGGER.info('Waiting on valid configuration')
