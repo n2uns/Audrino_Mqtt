@@ -161,7 +161,7 @@ class Controller(udi_interface.Node):
 
         LOGGER.debug("anilog out up date mydat")
         message = self.devlist
-        payload = message
+        payload = message.payload
         myjson_payload = json.loads(payload)
 #       result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
  #       if result[0] == 0:
