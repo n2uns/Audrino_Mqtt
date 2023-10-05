@@ -163,14 +163,19 @@ class Controller(udi_interface.Node):
         mynode = self.poly.getNode('controller')
         mymessage = mynode.getDriver("GV11")
         mypayload = '("AO1": "{}" )'.format(mymessage)
+
+
+        data = {}
+        data['AO1'] = mymessage
+        json_data = json.dumps(data)
 #        myjson_payload = mypayload
         result = self.mqttc.publish(self.mqtt_topic_cmd, mypayload)
         LOGGER.info(
-            "pushed to {} data = {}".format(self.mqtt_topic_cmd, mypayload)
+            "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
         )
         if result[0] == 0:
             LOGGER.info(
-                "pushed to {} data = {}".format(self.mqtt_topic_cmd, mypayload)
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
         ##    ***************************************** need to add prosses commands all 10 outputs
