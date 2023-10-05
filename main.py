@@ -161,13 +161,13 @@ class Controller(udi_interface.Node):
 
         LOGGER.debug("anilog out up date mydat")
         node = self.poly.getNode('controller')
-        mymessage = node
+        mymessage = json.loads(node)
         payload = mymessage
         myjson_payload = payload
 #       result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
  #       if result[0] == 0:
         LOGGER.info(
-        "pushed to {} data = {}".format(self.mqtt_topic_cmd, json.loads(node))
+        "pushed to {} data = {}".format(self.mqtt_topic_cmd, mymessage)
         )
 
         ##    ***************************************** need to add prosses commands all 10 outputs
