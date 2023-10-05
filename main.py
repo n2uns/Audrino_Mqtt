@@ -169,7 +169,7 @@ class Controller(udi_interface.Node):
         data['AO1'] = mymessage
         json_data = json.dumps(data)
 #        myjson_payload = mypayload
-        result = self.mqttc.publish(self.mqtt_topic_cmd, mypayload)
+        result = self.mqttc.publish(self.mqtt_topic_cmd, json_data)
         LOGGER.info(
             "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
         )
