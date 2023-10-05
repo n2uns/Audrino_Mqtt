@@ -151,7 +151,7 @@ class Controller(udi_interface.Node):
 
     def commandAO1(self, none):
         mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV16")
+        mymessage = int(command.get("value")) #mynode.getDriver("GV19")
         data = {}
         data['AO1'] = mymessage
         json_data = json.dumps(data)
@@ -185,9 +185,9 @@ class Controller(udi_interface.Node):
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, json_data)
             )
 
-    def commandAO4(self, none):
+    def commandAO4(self, command):
         mynode = self.poly.getNode('controller')
-        mymessage = mynode.getDriver("GV19")
+        mymessage = int(command.get("value")) #mynode.getDriver("GV19")
         data = {}
         data['AO4'] = mymessage
         json_data = json.dumps(data)
