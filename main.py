@@ -73,8 +73,8 @@ class Controller(udi_interface.Node):
         polyglot.subscribe(polyglot.START, self.start, address)
 
         # start processing events and create add our controller node
-        polyglot.start("1.0.1")
-#        polyglot.ready()
+#        polyglot.start("1.0.1")
+        polyglot.ready()
         # start mqtt
         while self.valid_configuration is False:
             LOGGER.info('Waiting on valid configuration')
@@ -615,7 +615,7 @@ class Controller(udi_interface.Node):
 if __name__ == "__main__":
     try:
         polyglot = udi_interface.Interface([])
-        polyglot.start()
+        polyglot.start("1.0.1")
 
         # Create the controller node
         Controller(polyglot, 'controller', 'controller', 'Arduino MQTT')
