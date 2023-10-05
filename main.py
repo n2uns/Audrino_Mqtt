@@ -160,8 +160,8 @@ class Controller(udi_interface.Node):
     def mycommand(self, none):
 
         LOGGER.debug("anilog out up date mydat")
-        node = self.poly.getNode('controller')
-        mymessage = json.loads(node)
+        mynode = self.poly.getNode('controller')
+        mymessage = mynode.getDriver("GV11")
         payload = mymessage
         myjson_payload = payload
 #       result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
