@@ -66,6 +66,7 @@ class Controller(udi_interface.Node):
         self.valid_configuration = False
         self.valid_files = False
         self.json_payload = None
+        self.message =None
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.POLL, self.poll)
@@ -148,8 +149,21 @@ class Controller(udi_interface.Node):
     match what is in the nodedef profile file. 
     '''
 
-    def mycommand(self, mydat):
-        LOGGER.debug("anilog out up date mydat = {}").format(mydat)
+    def commandAO1(self, none):
+        LOGGER.debug("anilog out up date mydat")
+        result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
+        if result[0] == 0:
+            LOGGER.info(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, self.drivers)
+            )
+
+    def mycommand(self, none):
+        LOGGER.debug("anilog out up date mydat")
+        result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
+        if result[0] == 0:
+            LOGGER.info(
+            "pushed to {} data = {}".format(self.mqtt_topic_cmd, self.drivers)
+            )
         ##    ***************************************** need to add prosses commands all 10 outputs
     def discover(self, command=None):
         LOGGER.debug(
@@ -162,7 +176,7 @@ class Controller(udi_interface.Node):
     def noop(self):
         LOGGER.info('Discover not implemented')
 
-    commands = {'DISCOVER': discover, 'GV5': mycommand, 'GV6': mycommand, 'GV7': mycommand, 'GV8': mycommand, 'GV9': mycommand, 'GV16': mycommand, 'GV17': mycommand, 'GV18': mycommand, 'GV19': mycommand, 'GV20': mycommand}
+    commands = {'DISCOVER': discover, 'GV5': commandAO1, 'GV6': mycommand, 'GV7': mycommand, 'GV8': mycommand, 'GV9': mycommand, 'GV16': mycommand, 'GV17': mycommand, 'GV18': mycommand, 'GV19': mycommand, 'GV20': mycommand}
     def on_disconnect(self, client, userdata, rc):
         self.mqttc.is_connected = False
         if rc != 0:
