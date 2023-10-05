@@ -66,15 +66,15 @@ class Controller(udi_interface.Node):
         self.valid_configuration = False
         self.valid_files = False
         self.json_payload = None
-        self.message =None
+        self.message = None
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.POLL, self.poll)
         polyglot.subscribe(polyglot.START, self.start, address)
 
         # start processing events and create add our controller node
-
-        polyglot.ready("1.0.1")
+        polyglot.start("1.0.1")
+        polyglot.ready()
         # start mqtt
         while self.valid_configuration is False:
             LOGGER.info('Waiting on valid configuration')
