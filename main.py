@@ -12,9 +12,7 @@ import json
 import time
 
 LOGGER = udi_interface.LOGGER
-
 Custom = udi_interface.Custom
-
 '''
 Controller is interfacing with both Polyglot and the device. In this
 case the device is just a count that has two values, the count and the count
@@ -22,7 +20,9 @@ multiplied by a user defined multiplier. These get updated at every
 shortPoll interval.
 '''
 class Controller(udi_interface.Node):
+
     id = 'test'
+
     drivers = [
         {'driver': 'ST', 'value': 1, 'uom': 2},
         {'driver': 'GV1', 'value': 0, 'uom': 78},
@@ -162,9 +162,9 @@ class Controller(udi_interface.Node):
         LOGGER.debug("anilog out up date mydat")
         mynode = self.poly.getNode('controller')
         mymessage = mynode.getDriver("GV11")
-        mypayload = "{'AO1': {}}".format(mymessage)
-        myjson_payload = mypayload
-        result = self.mqttc.publish(self.mqtt_topic_cmd, mypayload )
+        mypayload = '{"AO1": "{}" }'.format(mymessage)
+#        myjson_payload = mypayload
+        result = self.mqttc.publish(self.mqtt_topic_cmd, mypayload)
         if result[0] == 0:
             LOGGER.info(
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, mypayload)
