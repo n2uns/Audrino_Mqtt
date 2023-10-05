@@ -149,9 +149,9 @@ class Controller(udi_interface.Node):
     match what is in the nodedef profile file. 
     '''
 
-    def commandAO1(self, none):
-        mynode = self.poly.getNode('controller')
-        mymessage = int(command.get("value")) #mynode.getDriver("GV19")
+    def commandAO1(self, command):
+#        mynode = self.poly.getNode('controller')
+        mymessage = int(command.get("value"))
         data = {}
         data['AO1'] = mymessage
         json_data = json.dumps(data)
