@@ -162,13 +162,13 @@ class Controller(udi_interface.Node):
         LOGGER.debug("anilog out up date mydat")
         mynode = self.poly.getNode('controller')
         mymessage = mynode.getDriver("GV11")
-        payload = mymessage
+        payload = "{AO1: {}}".format(mymessage)
         myjson_payload = payload
-#       result = self.mqttc.publish(self.mqtt_topic_cmd, self.drivers, )
- #       if result[0] == 0:
-        LOGGER.info(
-        "pushed to {} data = {}".format(self.mqtt_topic_cmd, mymessage)
-        )
+        result = self.mqttc.publish(self.mqtt_topic_cmd, payload )
+        if result[0] == 0:
+            LOGGER.info(
+                "pushed to {} data = {}".format(self.mqtt_topic_cmd, payload)
+            )
 
         ##    ***************************************** need to add prosses commands all 10 outputs
     def discover(self, command=None):
