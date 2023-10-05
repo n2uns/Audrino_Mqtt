@@ -162,9 +162,12 @@ class Controller(udi_interface.Node):
         LOGGER.debug("anilog out up date mydat")
         mynode = self.poly.getNode('controller')
         mymessage = mynode.getDriver("GV11")
-        mypayload = '{"AO1": "{}" }'.format(mymessage)
+        mypayload = '("AO1": "{}" )'.format(mymessage)
 #        myjson_payload = mypayload
         result = self.mqttc.publish(self.mqtt_topic_cmd, mypayload)
+        LOGGER.info(
+            "pushed to {} data = {}".format(self.mqtt_topic_cmd, mypayload)
+        )
         if result[0] == 0:
             LOGGER.info(
                 "pushed to {} data = {}".format(self.mqtt_topic_cmd, mypayload)
