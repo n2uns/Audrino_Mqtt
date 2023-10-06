@@ -496,7 +496,7 @@ class Controller(udi_interface.Node):
                     f.write('               </cmd >\n')
                 if "DO2" in self.json_payload :
                     f.write('               <cmd id="GV6" >\n')
-                    f.write('                   <p id="" editor="DO" init="GV5" />\n')
+                    f.write('                   <p id="" editor="DO" init="GV6" />\n')
                     f.write('               </cmd >\n')
                 if "DO3" in self.json_payload :
                     f.write('               <cmd id="GV7" >\n')
@@ -615,7 +615,7 @@ class Controller(udi_interface.Node):
 if __name__ == "__main__":
     try:
         polyglot = udi_interface.Interface([])
-        polyglot.start("1.0.1")
+        polyglot.start("1.0.2")
 
         # Create the controller node here
         Controller(polyglot, 'controller', 'controller', 'Arduino MQTT')
