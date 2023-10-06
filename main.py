@@ -569,7 +569,7 @@ class Controller(udi_interface.Node):
                     node.setDriver('GV5', (self.json_payload["DO1"]), True, True)
                     LOGGER.debug("found DO1")
                 if "DO2" in self.json_payload :
-                    node.setDriver('GV6', (self.json_payload["DO1"]), True, True)
+                    node.setDriver('GV6', (self.json_payload["DO2"]), True, True)
                     LOGGER.debug("found DO2")
                 if "DO3" in self.json_payload :
                     node.setDriver('GV7', (self.json_payload["DO3"]), True, True)
