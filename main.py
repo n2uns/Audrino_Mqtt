@@ -163,7 +163,7 @@ class Controller(udi_interface.Node):
             )
 
     def commandAO2(self, command):
-        mymessage = int(command.get("value"))
+        mymessage = float(command.get("value"))
         data = {}
         data['AO2'] = mymessage
         json_data = json.dumps(data)
