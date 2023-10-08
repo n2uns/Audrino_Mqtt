@@ -152,7 +152,7 @@ class Controller(udi_interface.Node):
 
     def commandAO1(self, command):
 #        mynode = self.poly.getNode('controller')
-        mymessage = float(command.get("value"))
+        mymessage = int(command.get("value"))
         data = {}
         data['AO1'] = mymessage
         json_data = json.dumps(data)
@@ -163,7 +163,7 @@ class Controller(udi_interface.Node):
             )
 
     def commandAO2(self, command):
-        mymessage = float(command.get("value"))
+        mymessage = int(command.get("value"))
         data = {}
         data['AO2'] = mymessage
         json_data = json.dumps(data)
@@ -174,7 +174,7 @@ class Controller(udi_interface.Node):
             )
 
     def commandAO3(self, command):
-        mymessage = float(command.get("value"))
+        mymessage = int(command.get("value"))
         data = {}
         data['AO3'] = mymessage
         json_data = json.dumps(data)
@@ -185,7 +185,7 @@ class Controller(udi_interface.Node):
             )
 
     def commandAO4(self, command):
-        mymessage = float(command.get("value"))
+        mymessage = int(command.get("value"))
         data = {}
         data['AO4'] = mymessage
         json_data = json.dumps(data)
@@ -196,7 +196,7 @@ class Controller(udi_interface.Node):
             )
 
     def commandAO5(self, command):
-        mymessage = float(command.get("value"))
+        mymessage = int(command.get("value"))
         data = {}
         data['AO5'] = mymessage
         json_data = json.dumps(data)
