@@ -104,12 +104,16 @@ class Controller(udi_interface.Node):
     def parameterHandler(self, params):
         self.Parameters.load(params)
         self.mqtt_server = self.Parameters["mqtt_server"] or 'localhost'
-        self.mqtt_port = int(self.Parameters["mqtt_port"] or 1883)
+        self.mqtt_port = int(self.Parameters["mqtt_port"] or 1884)
         if self.Parameters["mqtt_user"] is None:
             LOGGER.error("mqtt_user must be configured")
+            return False
         if self.Parameters["mqtt_password"] is None:
             LOGGER.error("mqtt_password must be configured")
-
+            return False
+        if self.Parameters["mqtt_topic"] is None:
+            LOGGER.error("mqtt_topic must be configured")
+            return False
         self.mqtt_user = self.Parameters["mqtt_user"]
         self.mqtt_password = self.Parameters["mqtt_password"]
         # ***************************************    read in the topic from config

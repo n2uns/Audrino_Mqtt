@@ -10,6 +10,9 @@ You can install NodeServer from the Polyglot store or manually running
 ### Notes
 
 This BETA version and is used to add node service to an Adruino project.
+works with ISYarduin.h and can be added to your lib dir.
+
+https://github.com/n2uns/ISYandrino
 
 Please report any problems on the UDI user forum.
 
